@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Movers India Group - Around the world, around the clock</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'royal-blue': '#0033A0',
+                        'deep-orange': '#FF6600',
+                    },
+                    animation: {
+                        // 'hero-pan': 'hero-pan 20s linear infinite alternate', // Removed
+                        'partner-scroll': 'partner-scroll 40s linear infinite',
+                    },
+                    keyframes: {
+                        // 'hero-pan': { // Removed
+                        //     '0%': { 'background-position': '0% 50%' },
+                        //     '100%': { 'background-position': '100% 50%' },
+                        // },
+                        'partner-scroll': {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(-100%)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Base styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa; /* Light gray background */
+        }
+        
+        /* Loading overlay */
+        #loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            transition: opacity 0.5s ease;
+        }
+        .spinner {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            border: 8px solid #f3f3f3;
+            border-top: 8px solid #0033A0; /* Royal Blue */
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Reveal-on-scroll animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Swiper Hero Slider styles */
+        .hero-slider .swiper-slide {
+            background-size: cover;
+            background-position: center;
+        }
+        .hero-slider .swiper-button-next,
+        .hero-slider .swiper-button-prev {
+            color: white; /* Use white for visibility */
+            background-color: rgba(0, 51, 160, 0.5); /* Semi-transparent royal-blue */
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            transition: background-color 0.3s ease;
+        }
+        .hero-slider .swiper-button-next:hover,
+        .hero-slider .swiper-button-prev:hover {
+            background-color: #FF6600; /* deep-orange on hover */
+        }
+        .hero-slider .swiper-button-next::after,
+        .hero-slider .swiper-button-prev::after {
+            font-size: 20px; /* Smaller icon */
+            font-weight: 900;
+        }
+        .hero-slider .swiper-pagination-bullet {
+            background: rgba(255, 255, 255, 0.7);
+            opacity: 1;
+            width: 10px;
+            height: 10px;
+            transition: background-color 0.3s ease, width 0.3s ease;
+        }
+        .hero-slider .swiper-pagination-bullet-active {
+            background: #FF6600; /* deep-orange */
+            width: 24px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <div id="loader">
+        <div class="spinner"></div>
+    </div>
+
+    <header id="header" class="bg-white sticky top-0 left-0 right-0 z-50 transition-all duration-300 shadow-sm">
+        <nav class="container mx-auto px-4 lg:px-6 py-4 flex justify-between items-center">
+            <a href="#home" class="text-royal-blue">
+                <h1 class="text-2xl font-bold">My Movers India Group</h1>
+                <p class="text-sm text-deep-orange font-medium">“Around the world, around the clock”</p>
+            </a>
+            
+            <div class="hidden lg:flex space-x-8">
+                <a href="#home" class="text-gray-700 hover:text-deep-orange transition font-medium">Home</a>
+                <a href="#vehicles" class="text-gray-700 hover:text-deep-orange transition font-medium">Vehicles Available</a>
+                <a href="#goods" class="text-gray-700 hover:text-deep-orange transition font-medium">Goods Available</a>
+                <a href="#partners" class="text-gray-700 hover:text-deep-orange transition font-medium">Our Partners</a>
+                <a href="#about" class="text-gray-700 hover:text-deep-orange transition font-medium">About Us</a>
+                <a href="#contact" class="text-gray-700 hover:text-deep-orange transition font-medium">Contact Us</a>
+            </div>
+            
+            <button id="mobile-menu-button" class="lg:hidden text-royal-blue text-2xl">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+        
+        <div id="mobile-menu" class="hidden lg:hidden flex-col bg-white shadow-lg absolute top-[84px] left-0 w-full z-40">
+            <a href="#home" class="block py-3 px-6 text-gray-700 hover:bg-gray-100 mobile-nav-link">Home</a>
+            <a href="#vehicles" class="block py-3 px-6 text-gray-700 hover:bg-gray-100 mobile-nav-link">Vehicles Available</a>
+            <a href="#goods" class="block py-3 px-6 text-gray-700 hover:bg-gray-100 mobile-nav-link">Goods Available</a>
+            <a href="#partners" class="block py-3 px-6 text-gray-700 hover:bg-gray-100 mobile-nav-link">Our Partners</a>
+            <a href="#about" class="block py-3 px-6 text-gray-700 hover:bg-gray-100 mobile-nav-link">About Us</a>
+            <a href="#contact" class="block py-3 px-6 text-gray-700 hover:bg-gray-100 mobile-nav-link">Contact Us</a>
+        </div>
+    </header>
+
+    <main>
+
+        <section id="home" class="h-screen min-h-[600px] relative text-white">
+            <div class="swiper hero-slider h-full">
+                <div class="swiper-wrapper">
+                    
+                    <div class="swiper-slide h-full flex items-center justify-center" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('Gemini_Generated_Image_6e3qtm6e3qtm6e3q (3).jpg');">
+                        <div class="text-center p-4">
+                            <h1 class="text-4xl md:text-6xl font-extrabold mb-4" style="text-shadow: 2px 2px 8px rgba(0,0,0,0.7);">My Movers India Group</h1>
+                            <p class="text-xl md:text-2xl mb-8 font-light italic">“Around the world, around the clock”</p>
+                            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                                <button id="open-quote-modal-hero" class="bg-deep-orange text-white py-3 px-8 rounded-full font-semibold text-lg hover:bg-orange-600 transition duration-300 transform hover:scale-105 shadow-lg">
+                                    Get a Quote
+                                </button>
+                                <a href="#contact" class="bg-royal-blue text-white py-3 px-8 rounded-full font-semibold text-lg hover:bg-blue-800 transition duration-300 transform hover:scale-105 shadow-lg">
+                                    Contact Us
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="swiper-slide h-full flex items-center justify-center" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('Gemini_Generated_Image_6e3qtm6e3qtm6e3q (1).jpg');">
+                        <div class="text-center p-4">
+                            <h1 class="text-4xl md:text-6xl font-extrabold mb-4" style="text-shadow: 2px 2px 8px rgba(0,0,0,0.7);">Safe & Reliable Packing</h1>
+                            <p class="text-xl md:text-2xl mb-8 font-light italic">Precision and care in every move.</p>
+                            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                                <button class="bg-deep-orange text-white py-3 px-8 rounded-full font-semibold text-lg hover:bg-orange-600 transition duration-300 transform hover:scale-105 shadow-lg open-quote-modal">
+                                    Get a Quote
+                                </button>
+                                <a href="#contact" class="bg-royal-blue text-white py-3 px-8 rounded-full font-semibold text-lg hover:bg-blue-800 transition duration-300 transform hover:scale-105 shadow-lg">
+                                    Contact Us
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide h-full flex items-center justify-center" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('Gemini_Generated_Image_6e3qtm6e3qtm6e3q.jpg');">
+                        <div class="text-center p-4">
+                            <h1 class="text-4xl md:text-6xl font-extrabold mb-4" style="text-shadow: 2px 2px 8px rgba(0,0,0,0.7);">Global Reach, Local Expertise</h1>
+                            <p class="text-xl md:text-2xl mb-8 font-light italic">Connecting India to the world.</p>
+                            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                                <button class="bg-deep-orange text-white py-3 px-8 rounded-full font-semibold text-lg hover:bg-orange-600 transition duration-300 transform hover:scale-105 shadow-lg open-quote-modal">
+                                    Get a Quote
+                                </button>
+                                <a href="#contact" class="bg-royal-blue text-white py-3 px-8 rounded-full font-semibold text-lg hover:bg-blue-800 transition duration-300 transform hover:scale-105 shadow-lg">
+                                    Contact Us
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+        </section>
+
+
+        <section id="vehicles" class="py-20 bg-white">
+            <div class="container mx-auto px-4 lg:px-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-royal-blue mb-12 reveal">Vehicles Available</h2>
+                
+                <div class="mb-8 reveal flex flex-col md:flex-row gap-4">
+                    <input type="text" id="vehicle-search" placeholder="Search by name (e.g., Tata 407)" class="w-full md:w-1/2 p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-royal-blue">
+                    <select id="vehicle-filter-type" class="w-full md:w-1/4 p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-royal-blue">
+                        <option value="">All Types</option>
+                        <option value="Open">Open</option>
+                        <option value="Closed">Closed</option>
+                        <option value="Container">Container</option>
+                        <option value="Trailer">Trailer</option>
+                    </select>
+                    <select id="vehicle-filter-size" class="w-full md:w-1/4 p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-royal-blue">
+                        <option value="">All Sizes</option>
+                        <option value="14 ft">14 ft</option>
+                        <option value="17 ft">17 ft</option>
+                        <option value="22 ft">22 ft</option>
+                        <option value="32 ft">32 ft</option>
+                    </select>
+                </div>
+
+                <div id="vehicle-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Vehicle cards will be injected here by JavaScript -->
+                </div>
+                
+                <div class="text-center mt-12 reveal">
+                    <button id="toggle-vehicle-form" class="bg-gray-700 text-white py-2 px-6 rounded-lg font-medium hover:bg-gray-800 transition">
+                        Admin: Add New Vehicle
+                    </button>
+                </div>
+                
+                <div id="vehicle-form-container" class="hidden mt-8 max-w-2xl mx-auto bg-gray-100 p-8 rounded-lg shadow-inner reveal">
+                    <h3 class="text-2xl font-semibold text-center text-royal-blue mb-6">Add New Vehicle</h3>
+                    <form id="vehicle-form" class="space-y-4">
+                        <input type="text" id="vehicle-name" placeholder="Vehicle Name (e.g., Tata 407)" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-royal-blue" required>
+                        <input type="text" id="vehicle-size" placeholder="Size/Capacity (e.g., 14 ft / 17 ft)" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-royal-blue" required>
+                        <select id="vehicle-type" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-royal-blue" required>
+                            <option value="" disabled selected>Select Type</option>
+                            <option value="Open">Open</option>
+                            <option value="Closed">Closed</option>
+                            <option value: "Container">Container</option>
+                            <option value="Trailer">Trailer</option>
+                        </select>
+                        <input type="text" id="vehicle-photo" placeholder="Vehicle Photo URL (e.g., https://placehold.co/...)" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-royal-blue">
+                        <button type="submit" class="w-full bg-royal-blue text-white py-3 rounded-lg font-semibold hover:bg-blue-800 transition">Add Vehicle</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section id="goods" class="py-20 bg-gray-50">
+            <div class="container mx-auto px-4 lg:px-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-royal-blue mb-12 reveal">Goods Available for Transport</h2>
+                
+                <div id="goods-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Goods cards will be injected here by JavaScript -->
+                </div>
+                
+                <div class="text-center mt-12 reveal">
+                    <button id="toggle-goods-form" class="bg-gray-700 text-white py-2 px-6 rounded-lg font-medium hover:bg-gray-800 transition">
+                        Admin: Add New Goods
+                    </button>
+                </div>
+                
+                <div id="goods-form-container" class="hidden mt-8 max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-inner border reveal">
+                    <h3 class="text-2xl font-semibold text-center text-royal-blue mb-6">Add New Goods</h3>
+                    <form id="goods-form" class="space-y-4">
+                        <input type="text" id="goods-desc" placeholder="Description (e.g., Furniture)" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-royal-blue" required>
+                        <input type="text" id="goods-from" placeholder="From (e.g., Delhi)" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-royal-blue" required>
+                        <input type="text" id="goods-to" placeholder="To (e.g., Mumbai)" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-royal-blue" required>
+                        <input type="text" id="goods-company" placeholder="Company/Logo URL (e.g., https://placehold.co/100x40)" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-royal-blue">
+                        <input type="text" id="goods-load" placeholder="Estimated Load (e.g., 5 Tons)" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-royal-blue" required>
+                        <input type="text" id="goods-photo" placeholder="Goods Photo URL (e.g., https://placehold.co/...)" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-royal-blue">
+                        <button type="submit" class="w-full bg-royal-blue text-white py-3 rounded-lg font-semibold hover:bg-blue-800 transition">Add Goods</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section id="partners" class="py-20 bg-white">
+            <div class="container mx-auto px-4 lg:px-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-royal-blue mb-12 reveal">Our Partners</h2>
+                
+                <div class="relative w-full overflow-hidden reveal">
+                    <div id="partner-carousel" class="flex w-max">
+                        <!-- Partner logos will be injected here by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="py-20 bg-gray-50">
+            <div class="container mx-auto px-4 lg:px-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-royal-blue mb-12 reveal">About My Movers India Group</h2>
+                <div class="flex flex-col lg:flex-row items-center gap-12">
+                    <div class="lg:w-1/2 reveal">
+                        <div id="about-text-short" class="text-lg text-gray-700 leading-relaxed space-y-4">
+                            <p>My Movers India Group is a premier name in the transport and logistics industry, built on a foundation of trust, reliability, and unparalleled customer service. With years of experience, our mission is to provide seamless and stress-free moving solutions, whether you're moving across the city or across the country.</p>
+                            <p>We understand that every move is unique, and our dedicated team of professionals is equipped to handle all your requirements with precision and care. "Around the world, around the clock," we are always ready to serve you.</p>
+                        </div>
+                        <div id="about-text-full" class="hidden text-lg text-gray-700 leading-relaxed space-y-4">
+                            <p>My Movers India Group is a premier name in the transport and logistics industry, built on a foundation of trust, reliability, and unparalleled customer service. With years of experience, our mission is to provide seamless and stress-free moving solutions, whether you're moving across the city or across the country.</p>
+                            <p>We understand that every move is unique, and our dedicated team of professionals is equipped to handle all your requirements with precision and care. "Around the world, around the clock," we are always ready to serve you.</p>
+                            <p>Our fleet of modern, well-maintained vehicles ensures the safe and timely delivery of your goods. From household furniture and electronics to heavy machinery and commercial cargo, we have the expertise and the resources to manage it all. We pride ourselves on our transparent pricing, professional conduct, and commitment to excellence, making us the preferred choice for thousands of satisfied customers.</p>
+                        </div>
+                        <button id="read-more-btn" class="mt-6 bg-deep-orange text-white py-2 px-6 rounded-lg font-medium hover:bg-orange-600 transition">
+                            Read More
+                        </button>
+                    </div>
+                    <!-- START: Updated About Us Images -->
+                    <div class="lg:w-1/2 grid grid-cols-2 gap-4 reveal">
+                        <img src="Gemini_Generated_Image_6e3qtm6e3qtm6e3q (2).jpg" alt="Logistics" class="rounded-lg shadow-lg reveal transition-opacity duration-1000 opacity-0 w-full h-48 object-cover">
+                        <img src="Gemini_Generated_Image_6e3qtm6e3qtm6e3q (4).jpg" alt="Warehouse" class="rounded-lg shadow-lg reveal transition-opacity duration-1000 opacity-0 w-full h-48 object-cover" style="transition-delay: 200ms;">
+                        <img src="Gemini_Generated_Image_6e3qtm6e3qtm6e3q (1).jpg" alt="Trucking" class="rounded-lg shadow-lg col-span-2 reveal transition-opacity duration-1000 opacity-0 w-full h-64 object-cover" style="transition-delay: 400ms;">
+                    </div>
+                    <!-- END: Updated About Us Images -->
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="py-20 bg-white">
+            <div class="container mx-auto px-4 lg:px-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-royal-blue mb-12 reveal">Get in Touch</h2>
+                <div class="flex flex-col lg:flex-row bg-gray-50 p-8 rounded-lg shadow-lg gap-8">
+                    <div class="lg:w-1/2 reveal">
+                        <h3 class="text-2xl font-semibold text-royal-blue mb-6">Send Us a Message</h3>
+                        <form id="contact-form" class="space-y-4">
+                            <input type="text" placeholder="Your Name" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-royal-blue" required>
+                            <input type="tel" placeholder="Your Phone" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-royal-blue" required>
+                            <input type="email" placeholder="Your Email" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-royal-blue" required>
+                            <textarea placeholder="Your Message" rows="5" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-royal-blue" required></textarea>
+                            <div class="flex flex-col sm:flex-row gap-4">
+                                <button type="submit" class="w-full bg-royal-blue text-white py-3 rounded-lg font-semibold hover:bg-blue-800 transition">
+                                    Submit
+                                </button>
+                                <a href="https://wa.me/910000000000" target="_blank" class="w-full flex items-center justify-center gap-2 bg-green-500 text-white py-3 rounded-lg font-semibold hover:bg-green-600 transition">
+                                    <i class="fab fa-whatsapp"></i> WhatsApp Us
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <div class="lg:w-1/2 reveal">
+                        <h3 class="text-2xl font-semibold text-royal-blue mb-6">Contact Information</h3>
+                        <div class="space-y-4 text-gray-700 text-lg">
+                            <p class="flex items-start gap-3">
+                                <i class="fas fa-map-marker-alt text-deep-orange mt-1.5"></i>
+                                <span>123 Transport Nagar, Main Highway,<br>New Delhi, 110001, India</span>
+                            </p>
+                            <p class="flex items-center gap-3">
+                                <i class="fas fa-phone-alt text-deep-orange"></i>
+                                <span>+91 98765 43210</span>
+                            </p>
+                            <p class="flex items-center gap-3">
+                                <i class="fas fa-envelope text-deep-orange"></i>
+                                <span>info@mygmoversindia.com</span>
+                            </p>
+                        </div>
+                        
+                        <div class="mt-8 rounded-lg overflow-hidden shadow-md">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.1371520698186!2d77.21415131508242!3d28.62564698242015!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd36a0000001%3A0x3939763f0c6090ac!2sIndia%20Gate!5e0!3m2!1sen!2sin!4f132"
+                                width="100%"
+                                height="250"
+                                style="border:0;"
+                                allowfullscreen=""
+                                loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-royal-blue text-white pt-16 pb-8">
+        <div class="container mx-auto px-4 lg:px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-2">My Movers India Group</h3>
+                    <p class="text-sm text-gray-300 italic">“Around the world, around the clock”</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-300 hover:text-white transition">Home</a></li>
+                        <li><a href="#vehicles" class="text-gray-300 hover:text-white transition">Vehicles</a></li>
+                        <li><a href="#goods" class="text-gray-300 hover:text-white transition">Goods</a></li>
+                        <li><a href="#partners" class="text-gray-300 hover:text-white transition">Partners</a></li>
+                        <li><a href="#about" class="text-gray-300 hover:text-white transition">About Us</a></li>
+                        <li><a href="#contact" class="text-gray-300 hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact Us</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li class="flex gap-2"><i class="fas fa-map-marker-alt mt-1"></i>New Delhi, India</li>
+                        <li class="flex gap-2"><i class="fas fa-phone-alt mt-1"></i>+91 98765 43210</li>
+                        <li class="flex gap-2"><i class="fas fa-envelope mt-1"></i>info@mygmoversindia.com</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Follow Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-white hover:text-deep-orange text-2xl transition"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white hover:text-deep-orange text-2xl transition"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white hover:text-deep-orange text-2xl transition"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="text-white hover:text-deep-orange text-2xl transition"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-blue-700 pt-8 text-center text-gray-400">
+                <p>© 2025 My Movers India Group. All Rights Reserved.</p>
+                <p class="text-sm mt-1">Developed by Gemini</p>
+            </div>
+        </div>
+    </footer>
+    
+    <a href="https://wa.me/910000000000" target="_blank" class="fixed bottom-6 right-6 bg-green-500 text-white w-16 h-16 rounded-full flex items-center justify-center shadow-lg transform hover:scale-110 transition duration-300 z-40">
+        <i class="fab fa-whatsapp text-4xl"></i>
+    </a>
+
+    <div id="quote-modal" class="hidden fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 p-4">
+        <div class="bg-white rounded-lg shadow-2xl p-8 max-w-lg w-full relative reveal">
+            <button id="close-quote-modal" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-2xl">
+                ×
+            </button>
+            <h3 class="text-2xl font-bold text-royal-blue mb-6 text-center">Get a Quick Quote</h3>
+            <form id="quote-form" class="space-y-4">
+                <input type="text" placeholder="Your Name" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-royal-blue" required>
+                <input type="text" placeholder="Route (e.g., Delhi to Mumbai)" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-royal-blue" required>
+                <input type="text" placeholder="Load Type (e.g., Household, Machinery)" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-royal-blue" required>
+                <input type="tel" placeholder="Your Phone" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-royal-blue" required>
+                <button type="submit" class="w-full bg-deep-orange text-white py-3 rounded-lg font-semibold hover:bg-orange-600 transition">Request Quote</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script>
+        // --- Mock Data ---
+        let vehicles = [
+            { name: "Tata 407", size: "14 ft", type: "Open", photo: "Gemini_Generated_Image_6e3qtm6e3qtm6e3q (5).jpg" },
+            { name: "Eicher 1110", size: "17 ft", type: "Closed", photo: "Gemini_Generated_Image_6e3qtm6e3qtm6e3q (4).jpg" },
+            { name: "Taurus Truck", size: "22 ft", type: "Container", photo: "Gemini_Generated_Image_6e3qtm6e3qtm6e3q (3).jpg" },
+            { name: "Ashok Leyland", size: "19 ft", type: "Closed", photo: "Gemini_Generated_Image_6e3qtm6e3qtm6e3q (2).jpg" },
+            { name: "Multi-Axle Trailer", size: "40 ft", type: "Trailer", photo: "Gemini_Generated_Image_6e3qtm6e3qtm6e3q (1).jpg" },
+            { name: "Mahindra Bolero", size: "8 ft", type: "Open", photo: "Gemini_Generated_Image_6e3qtm6e3qtm6e3q.jpg" }
+        ];
+
+        let goods = [
+            { desc: "Household Furniture", from: "Delhi", to: "Mumbai", companyLogo: "", load: "3 Tons", photo: "" },
+            { desc: "Industrial Machinery", from: "Pune", to: "Chennai", companyLogo: "", load: "10 Tons", photo: "" },
+            { desc: "Electronics & Appliances", from: "Bangalore", to: "Kolkata", companyLogo: "", load: "4 Tons", photo: "" }
+        ];
+
+        const partners = [
+            { name: "Prunagiri Transport Company", logo: "" },
+            { name: "Bareilly Logistic Packers", logo: "" },
+            { name: "New Packer Mover", logo: "" },
+            { name: "National Transport Co.", logo: "" },
+            { name: "SafeMove Logistics", logo: "" },
+            { name: "Express Cargo", logo: "" }
+        ];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // --- Element Selection ---
+            const loader = document.getElementById('loader');
+            const header = document.getElementById('header');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+            
+            const vehicleGrid = document.getElementById('vehicle-grid');
+            const vehicleFormContainer = document.getElementById('vehicle-form-container');
+            const toggleVehicleForm = document.getElementById('toggle-vehicle-form');
+            const vehicleForm = document.getElementById('vehicle-form');
+            const vehicleSearch = document.getElementById('vehicle-search');
+            const vehicleFilterType = document.getElementById('vehicle-filter-type');
+            const vehicleFilterSize = document.getElementById('vehicle-filter-size');
+
+            const goodsGrid = document.getElementById('goods-grid');
+            const goodsFormContainer = document.getElementById('goods-form-container');
+            const toggleGoodsForm = document.getElementById('toggle-goods-form');
+            const goodsForm = document.getElementById('goods-form');
+            
+            const partnerCarousel = document.getElementById('partner-carousel');
+            
+            const readMoreBtn = document.getElementById('read-more-btn');
+            const aboutTextShort = document.getElementById('about-text-short');
+            const aboutTextFull = document.getElementById('about-text-full');
+
+            const quoteModal = document.getElementById('quote-modal');
+            const closeQuoteModalBtn = document.getElementById('close-quote-modal');
+            const openQuoteModalBtns = [
+                document.getElementById('open-quote-modal-hero'),
+                ...document.querySelectorAll('.open-quote-modal') // Now catches buttons on other slides
+            ];
+            
+            const contactForm = document.getElementById('contact-form');
+            const quoteForm = document.getElementById('quote-form');
+
+            // --- Hide Loader on Window Load ---
+            window.onload = () => {
+                loader.style.opacity = '0';
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                }, 500);
+            };
+
+            // --- Sticky Header Shadow ---
+            window.onscroll = () => {
+                if (window.scrollY > 20) {
+                    header.classList.add('shadow-lg', 'bg-white/95', 'backdrop-blur-sm');
+                } else {
+                    header.classList.remove('shadow-lg', 'bg-white/95', 'backdrop-blur-sm');
+                }
+            };
+
+            // --- Mobile Menu Toggle ---
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                mobileMenu.classList.toggle('flex');
+            });
+
+            // --- Close Mobile Menu on Link Click ---
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenu.classList.remove('flex');
+                });
+            });
+            
+            // --- Smooth Scroll for All Anchor Links ---
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if(targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // --- Swiper Hero Slider Initialization ---
+            const heroSwiper = new Swiper('.hero-slider', {
+                loop: true,
+                effect: 'fade', // Use 'slide' or 'fade'
+                fadeEffect: {
+                    crossFade: true
+                },
+                autoplay: {
+                    delay: 5000,
+                    disableOnInteraction: false,
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+            });
+
+
+            // --- Render Functions ---
+            function renderVehicles() {
+                const searchTerm = vehicleSearch.value.toLowerCase();
+                const typeFilter = vehicleFilterType.value;
+                const sizeFilter = vehicleFilterSize.value;
+
+                const filteredVehicles = vehicles.filter(v => {
+                    const matchesSearch = v.name.toLowerCase().includes(searchTerm);
+                    const matchesType = !typeFilter || v.type === typeFilter;
+                    const matchesSize = !sizeFilter || v.size.includes(sizeFilter);
+                    return matchesSearch && matchesType && matchesSize;
+                });
+
+                vehicleGrid.innerHTML = filteredVehicles.map(v => `
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 reveal">
+                        <img src="${v.photo || 'https://via.placeholder.com/600x400.png?text=Loading...'}" alt="${v.name}" class="w-full h-48 object-cover vehicle-image" data-name="${v.name}" data-type="${v.type}">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-royal-blue mb-2">${v.name}</h3>
+                            <p class="text-gray-700 mb-1"><span class="font-semibold">Size/Capacity:</span> ${v.size}</p>
+                            <p class="text-gray-700"><span class="font-semibold">Type:</span> 
+                                <span class="text-sm font-medium ${
+                                    v.type === 'Open' ? 'bg-blue-100 text-blue-800' :
+                                    v.type === 'Closed' ? 'bg-gray-100 text-gray-800' :
+                                    v.type === 'Container' ? 'bg-red-100 text-red-800' :
+                                    v.type === 'Trailer' ? 'bg-yellow-100 text-yellow-800' : ''
+                                } py-0.5 px-2 rounded-full">${v.type}</span>
+                            </p>
+                        </div>
+                    </div>
+                `).join('');
+                // Request images for vehicle cards
+                document.querySelectorAll('.vehicle-image').forEach(img => {
+                    if (!img.src.includes('placeholder')) return; // Only replace placeholders
+                    const vehicleName = img.dataset.name;
+                    const vehicleType = img.dataset.type;
+                    img.src = generateImagePlaceholder(`A photorealistic image of a ${vehicleName} transport vehicle, type ${vehicleType}, for My Movers India Group. Clean, professional style, royal blue and orange accents.`);
+                });
+                observeElements();
+            }
+
+            function renderGoods() {
+                goodsGrid.innerHTML = goods.map(g => `
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 reveal">
+                        <img src="${g.photo || 'https://via.placeholder.com/600x400.png?text=Loading...'}" alt="${g.desc}" class="w-full h-48 object-cover goods-image" data-description="${g.desc}" data-route="${g.from} to ${g.to}">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-deep-orange mb-3">${g.desc}</h3>
+                            <p class="text-gray-700 mb-2 text-lg"><span class="font-semibold">Route:</span> ${g.from} → ${g.to}</p>
+                            <p class="text-gray-700 mb-4"><span class="font-semibold">Load:</span> ${g.load}</p>
+                            <img src="${g.companyLogo || 'https://via.placeholder.com/100x40.png?text=Loading...'}" alt="Company" class="h-10 company-logo-image" data-company="${g.companyLogo ? 'custom' : 'generic'}">
+                        </div>
+                    </div>
+                `).join('');
+                // Request images for goods cards
+                document.querySelectorAll('.goods-image').forEach(img => {
+                    if (!img.src.includes('placeholder')) return;
+                    const description = img.dataset.description;
+                    const route = img.dataset.route;
+                    img.src = generateImagePlaceholder(`A photorealistic image of ${description} being transported from ${route}, showing careful handling. Clean, professional style, royal blue and orange accents.`);
+                });
+                document.querySelectorAll('.company-logo-image').forEach(img => {
+                    if (!img.src.includes('placeholder')) return;
+                    if (img.dataset.company === 'generic') {
+                        img.src = generateImagePlaceholder(`A simple, modern placeholder company logo for a transport company. Professional, clean style, royal blue and orange colors.`);
+                    }
+                });
+                observeElements();
+            }
+            
+            function renderPartners() {
+                const partnerHTML = partners.map(p => `
+                    <div class="flex-shrink-0 w-64 mx-4 flex flex-col items-center justify-center p-6 bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow">
+                        <img src="${p.logo || 'https://via.placeholder.com/200x100.png?text=Loading...'}" alt="${p.name}" class="h-16 object-contain mb-4 partner-logo-image" data-name="${p.name}">
+                        <p class="text-gray-700 font-semibold text-center">${p.name}</p>
+                    </div>
+                `).join('');
+                // Duplicate for seamless scroll
+                partnerCarousel.innerHTML = partnerHTML + partnerHTML;
+                partnerCarousel.classList.add('animate-partner-scroll');
+
+                document.querySelectorAll('.partner-logo-image').forEach(img => {
+                    if (!img.src.includes('placeholder')) return;
+                    const partnerName = img.dataset.name;
+                    img.src = generateImagePlaceholder(`A professional logo for a transport and logistics company named "${partnerName}". Clean, modern, royal blue and orange color scheme.`);
+                });
+            }
+
+            // --- Admin Form Toggles ---
+            toggleVehicleForm.addEventListener('click', () => {
+                vehicleFormContainer.classList.toggle('hidden');
+            });
+            toggleGoodsForm.addEventListener('click', () => {
+                goodsFormContainer.classList.toggle('hidden');
+            });
+
+            // --- Admin Form Submissions ---
+            vehicleForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const newVehicle = {
+                    name: document.getElementById('vehicle-name').value,
+                    size: document.getElementById('vehicle-size').value,
+                    type: document.getElementById('vehicle-type').value,
+                    photo: generateImagePlaceholder(`A photorealistic image of a ${document.getElementById('vehicle-name').value} transport vehicle, type ${document.getElementById('vehicle-type').value}, for My Movers India Group. Clean, professional style, royal blue and orange accents.`)
+                };
+                vehicles.push(newVehicle);
+                renderVehicles();
+                vehicleForm.reset();
+                vehicleFormContainer.classList.add('hidden');
+            });
+
+            goodsForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const newGood = {
+                    desc: document.getElementById('goods-desc').value,
+                    from: document.getElementById('goods-from').value,
+                    to: document.getElementById('goods-to').value,
+                    companyLogo: generateImagePlaceholder(`A simple, modern placeholder company logo for a transport company. Professional, clean style, royal blue and orange colors.`),
+                    load: document.getElementById('goods-load').value,
+                    photo: generateImagePlaceholder(`A photorealistic image of ${document.getElementById('goods-desc').value} being transported from ${document.getElementById('goods-from').value} to ${document.getElementById('goods-to').value}, showing careful handling. Clean, professional style, royal blue and orange accents.`)
+                };
+                goods.push(newGood);
+                renderGoods();
+                goodsForm.reset();
+                goodsFormContainer.classList.add('hidden');
+            });
+            
+            // --- Vehicle Filtering ---
+            vehicleSearch.addEventListener('input', renderVehicles);
+            vehicleFilterType.addEventListener('change', renderVehicles);
+            vehicleFilterSize.addEventListener('change', renderVehicles);
+
+            // --- About Us Read More ---
+            readMoreBtn.addEventListener('click', () => {
+                const isHidden = aboutTextFull.classList.contains('hidden');
+                if (isHidden) {
+                    aboutTextFull.classList.remove('hidden');
+                    aboutTextShort.classList.add('hidden');
+                    readMoreBtn.textContent = 'Read Less';
+                } else {
+                    aboutTextFull.classList.add('hidden');
+                    aboutTextShort.classList.remove('hidden');
+                    readMoreBtn.textContent = 'Read More';
+                }
+            });
+            
+            // --- Quote Modal Logic ---
+            const openModal = () => quoteModal.classList.remove('hidden');
+            const closeModal = () => quoteModal.classList.add('hidden');
+            
+            openQuoteModalBtns.forEach(btn => btn.addEventListener('click', openModal));
+            closeQuoteModalBtn.addEventListener('click', closeModal);
+            quoteModal.addEventListener('click', (e) => {
+                if (e.target === quoteModal) {
+                    closeModal();
+                }
+            });
+
+            // --- Form Submit Handlers (to prevent default and show message) ---
+            function handleFormSubmit(e) {
+                e.preventDefault();
+                console.log("Form submitted!");
+                e.target.reset();
+                
+                if (e.target.id === 'quote-form') {
+                    closeModal();
+                }
+            }
+            
+            contactForm.addEventListener('submit', handleFormSubmit);
+            quoteForm.addEventListener('submit', handleFormSubmit);
+
+            // --- Intersection Observer for Animations ---
+            let observer;
+            function observeElements() {
+                if (observer) {
+                    observer.disconnect();
+                }
+                observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                        }
+                    });
+                }, { threshold: 0.1 });
+
+                document.querySelectorAll('.reveal').forEach(el => {
+                    observer.observe(el);
+                });
+            }
+
+            // --- Image Generation Helper Function (Updated) ---
+            function generateImagePlaceholder(description) {
+                // Return a standard placeholder as the generation function is not implemented
+                const encodedDesc = encodeURIComponent(description.substring(0, 50)); // Limit length
+                return `https://placehold.co/600x400/0033A0/FFFFFF?text=${encodedDesc}`;
+            }
+
+            // --- Initial Renders ---
+            renderVehicles();
+            renderGoods();
+            renderPartners();
+            observeElements();
+            
+            // START: Removed JS for About Us images (now set in HTML)
+            // const aboutImages = document.querySelectorAll('#about img');
+            // aboutImages[0].src = generateImagePlaceholder(...);
+            // aboutImages[1].src = generateImagePlaceholder(...);
+            // aboutImages[2].src = generateImagePlaceholder(...);
+            // END: Removed JS for About Us images
+        });
+
+    </script>
+</body>
+</html>
