@@ -135,9 +135,12 @@
 
     <header id="header" class="bg-white sticky top-0 left-0 right-0 z-50 transition-all duration-300 shadow-sm">
         <nav class="container mx-auto px-4 lg:px-6 py-4 flex justify-between items-center">
-            <a href="#home" class="text-royal-blue">
-                <h1 class="text-2xl font-bold">My Movers India Group</h1>
-                <p class="text-sm text-deep-orange font-medium">“Around the world, around the clock”</p>
+            <a href="#home" class="text-royal-blue flex items-center gap-2">
+                <img src="mypackerlogo.jpg" alt="My Movers India Group Logo" class="h-10">
+                <div>
+                    <h1 class="text-2xl font-bold">My Movers India Group</h1>
+                    <p class="text-sm text-deep-orange font-medium">“Around the world, around the clock”</p>
+                </div>
             </a>
             
             <div class="hidden lg:flex space-x-8">
@@ -146,6 +149,7 @@
                 <a href="#goods" class="text-gray-700 hover:text-deep-orange transition font-medium">Goods Available</a>
                 <a href="#partners" class="text-gray-700 hover:text-deep-orange transition font-medium">Our Partners</a>
                 <a href="#about" class="text-gray-700 hover:text-deep-orange transition font-medium">About Us</a>
+                <a href="#team" class="text-gray-700 hover:text-deep-orange transition font-medium">Our Team</a>
                 <a href="#contact" class="text-gray-700 hover:text-deep-orange transition font-medium">Contact Us</a>
             </div>
             
@@ -160,6 +164,7 @@
             <a href="#goods" class="block py-3 px-6 text-gray-700 hover:bg-gray-100 mobile-nav-link">Goods Available</a>
             <a href="#partners" class="block py-3 px-6 text-gray-700 hover:bg-gray-100 mobile-nav-link">Our Partners</a>
             <a href="#about" class="block py-3 px-6 text-gray-700 hover:bg-gray-100 mobile-nav-link">About Us</a>
+            <a href="#team" class="block py-3 px-6 text-gray-700 hover:bg-gray-100 mobile-nav-link">Our Team</a>
             <a href="#contact" class="block py-3 px-6 text-gray-700 hover:bg-gray-100 mobile-nav-link">Contact Us</a>
         </div>
     </header>
@@ -170,7 +175,7 @@
             <div class="swiper hero-slider h-full">
                 <div class="swiper-wrapper">
                     
-                    <div class="swiper-slide h-full flex items-center justify-center" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('Gemini_Generated_Image_6e3qtm6e3qtm6e3q (3).jpg');">
+                    <div class="swiper-slide h-full flex items-center justify-center" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('teammovers.png');">
                         <div class="text-center p-4">
                             <h1 class="text-4xl md:text-6xl font-extrabold mb-4" style="text-shadow: 2px 2px 8px rgba(0,0,0,0.7);">My Movers India Group</h1>
                             <p class="text-xl md:text-2xl mb-8 font-light italic">“Around the world, around the clock”</p>
@@ -185,7 +190,7 @@
                         </div>
                     </div>
                     
-                    <div class="swiper-slide h-full flex items-center justify-center" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('Gemini_Generated_Image_6e3qtm6e3qtm6e3q (1).jpg');">
+                    <div class="swiper-slide h-full flex items-center justify-center" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('Gemini_Generated_Image_6e3qtm6e3qtm6e3q%20(1).png');">
                         <div class="text-center p-4">
                             <h1 class="text-4xl md:text-6xl font-extrabold mb-4" style="text-shadow: 2px 2px 8px rgba(0,0,0,0.7);">Safe & Reliable Packing</h1>
                             <p class="text-xl md:text-2xl mb-8 font-light italic">Precision and care in every move.</p>
@@ -200,7 +205,7 @@
                         </div>
                     </div>
 
-                    <div class="swiper-slide h-full flex items-center justify-center" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('Gemini_Generated_Image_6e3qtm6e3qtm6e3q.jpg');">
+                    <div class="swiper-slide h-full flex items-center justify-center" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('Gemini_Generated_Image_6e3qtm6e3qtm6e3q.png');">
                         <div class="text-center p-4">
                             <h1 class="text-4xl md:text-6xl font-extrabold mb-4" style="text-shadow: 2px 2px 8px rgba(0,0,0,0.7);">Global Reach, Local Expertise</h1>
                             <p class="text-xl md:text-2xl mb-8 font-light italic">Connecting India to the world.</p>
@@ -245,8 +250,7 @@
                 </div>
 
                 <div id="vehicle-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Vehicle cards will be injected here by JavaScript -->
-                </div>
+                    <!-- Vehicle cards will be injected here by JavaScript --></div>
                 
                 <div class="text-center mt-12 reveal">
                     <button id="toggle-vehicle-form" class="bg-gray-700 text-white py-2 px-6 rounded-lg font-medium hover:bg-gray-800 transition">
@@ -278,8 +282,7 @@
                 <h2 class="text-3xl md:text-4xl font-bold text-center text-royal-blue mb-12 reveal">Goods Available for Transport</h2>
                 
                 <div id="goods-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Goods cards will be injected here by JavaScript -->
-                </div>
+                    <!-- Goods cards will be injected here by JavaScript --></div>
                 
                 <div class="text-center mt-12 reveal">
                     <button id="toggle-goods-form" class="bg-gray-700 text-white py-2 px-6 rounded-lg font-medium hover:bg-gray-800 transition">
@@ -308,8 +311,7 @@
                 
                 <div class="relative w-full overflow-hidden reveal">
                     <div id="partner-carousel" class="flex w-max">
-                        <!-- Partner logos will be injected here by JavaScript -->
-                    </div>
+                        <!-- Partner logos will be injected here by JavaScript --></div>
                 </div>
             </div>
         </section>
@@ -332,16 +334,27 @@
                             Read More
                         </button>
                     </div>
-                    <!-- START: Updated About Us Images -->
                     <div class="lg:w-1/2 grid grid-cols-3 gap-4 reveal">
-                        <img src="Gemini_Generated_Image_6e3qtm6e3qtm6e3q (1).jpg" alt="My Movers Truck 1" class="rounded-lg shadow-lg reveal transition-opacity duration-1000 opacity-0 w-full h-40 object-cover">
-                        <img src="Gemini_Generated_Image_6e3qtm6e3qtm6e3q (2).jpg" alt="My Movers Truck 2" class="rounded-lg shadow-lg reveal transition-opacity duration-1000 opacity-0 w-full h-40 object-cover" style="transition-delay: 100ms;">
-                        <img src="Gemini_Generated_Image_6e3qtm6e3qtm6e3q (3).jpg" alt="My Movers Truck 3" class="rounded-lg shadow-lg reveal transition-opacity duration-1000 opacity-0 w-full h-40 object-cover" style="transition-delay: 200ms;">
-                        <img src="Gemini_Generated_Image_6e3qtm6e3qtm6e3q (4).jpg" alt="My Movers Truck 4" class="rounded-lg shadow-lg reveal transition-opacity duration-1000 opacity-0 w-full h-40 object-cover" style="transition-delay: 300ms;">
-                        <img src="Gemini_Generated_Image_6e3qtm6e3qtm6e3q (5).jpg" alt="My Movers Truck 5" class="rounded-lg shadow-lg reveal transition-opacity duration-1000 opacity-0 w-full h-40 object-cover" style="transition-delay: 400ms;">
-                        <img src="Gemini_Generated_Image_6e3qtm6e3qtm6e3q.jpg" alt="My Movers Truck 6" class="rounded-lg shadow-lg reveal transition-opacity duration-1000 opacity-0 w-full h-40 object-cover" style="transition-delay: 500ms;">
+                        <img src="Gemini_Generated_Image_6e3qtm6e3qtm6e3q%20(1).png" alt="My Movers Truck 1" class="rounded-lg shadow-lg reveal transition-opacity duration-1000 opacity-0 w-full h-40 object-cover">
+                        <img src="Gemini_Generated_Image_6e3qtm6e3qtm6e3q%20(2).png" alt="My Movers Truck 2" class="rounded-lg shadow-lg reveal transition-opacity duration-1000 opacity-0 w-full h-40 object-cover" style="transition-delay: 100ms;">
+                        <img src="Gemini_Generated_Image_6e3qtm6e3qtm6e3q%20(3).png" alt="My Movers Truck 3" class="rounded-lg shadow-lg reveal transition-opacity duration-1000 opacity-0 w-full h-40 object-cover" style="transition-delay: 200ms;">
+                        <img src="Gemini_Generated_Image_6e3qtm6e3qtm6e3q%20(4).png" alt="My Movers Truck 4" class="rounded-lg shadow-lg reveal transition-opacity duration-1000 opacity-0 w-full h-40 object-cover" style="transition-delay: 300ms;">
+                        <img src="Gemini_Generated_Image_6e3qtm6e3qtm6e3q%20(5).png" alt="My Movers Truck 5" class="rounded-lg shadow-lg reveal transition-opacity duration-1000 opacity-0 w-full h-40 object-cover" style="transition-delay: 400ms;">
+                        <img src="Gemini_Generated_Image_6e3qtm6e3qtm6e3q.png" alt="My Movers Truck 6" class="rounded-lg shadow-lg reveal transition-opacity duration-1000 opacity-0 w-full h-40 object-cover" style="transition-delay: 500ms;">
                     </div>
-                    <!-- END: Updated About Us Images -->
+                </div>
+            </div>
+        </section>
+
+        <section id="team" class="py-20 bg-white">
+            <div class="container mx-auto px-4 lg:px-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-royal-blue mb-12 reveal">Our Team</h2>
+                <div class="flex justify-center">
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-lg text-center reveal max-w-sm">
+                        <img src="mypackerowner.jpg" alt="Owner" class="w-48 h-48 rounded-full mx-auto mb-4 object-cover border-4 border-deep-orange">
+                        <h3 class="text-xl font-bold text-royal-blue mb-2">Mansukh Rajpoot</h3>
+                        <p class="text-gray-700 italic">Founder & CEO</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -419,6 +432,7 @@
                         <li><a href="#goods" class="text-gray-300 hover:text-white transition">Goods</a></li>
                         <li><a href="#partners" class="text-gray-300 hover:text-white transition">Partners</a></li>
                         <li><a href="#about" class="text-gray-300 hover:text-white transition">About Us</a></li>
+                        <li><a href="#team" class="text-gray-300 hover:text-white transition">Our Team</a></li>
                         <li><a href="#contact" class="text-gray-300 hover:text-white transition">Contact</a></li>
                     </ul>
                 </div>
@@ -475,12 +489,12 @@
     <script>
         // --- Mock Data ---
         let vehicles = [
-            { name: "Tata 407", size: "14 ft", type: "Open", photo: "Gemini_Generated_Image_6e3qtm6e3qtm6e3q (5).jpg" },
-            { name: "Eicher 1110", size: "17 ft", type: "Closed", photo: "Gemini_Generated_Image_6e3qtm6e3qtm6e3q (4).jpg" },
-            { name: "Taurus Truck", size: "22 ft", type: "Container", photo: "Gemini_Generated_Image_6e3qtm6e3qtm6e3q (3).jpg" },
-            { name: "Ashok Leyland", size: "19 ft", type: "Closed", photo: "Gemini_Generated_Image_6e3qtm6e3qtm6e3q (2).jpg" },
-            { name: "Multi-Axle Trailer", size: "40 ft", type: "Trailer", photo: "Gemini_Generated_Image_6e3qtm6e3qtm6e3q (1).jpg" },
-            { name: "Mahindra Bolero", size: "8 ft", type: "Open", photo: "Gemini_Generated_Image_6e3qtm6e3qtm6e3q.jpg" }
+            { name: "Tata 407", size: "14 ft", type: "Open", photo: "Gemini_Generated_Image_6e3qtm6e3qtm6e3q%20(5).png" },
+            { name: "Eicher 1110", size: "17 ft", type: "Closed", photo: "Gemini_Generated_Image_6e3qtm6e3qtm6e3q%20(4).png" },
+            { name: "Taurus Truck", size: "22 ft", type: "Container", photo: "Gemini_Generated_Image_6e3qtm6e3qtm6e3q%20(3).png" },
+            { name: "Ashok Leyland", size: "19 ft", type: "Closed", photo: "Gemini_Generated_Image_6e3qtm6e3qtm6e3q%20(2).png" },
+            { name: "Multi-Axle Trailer", size: "40 ft", type: "Trailer", photo: "Gemini_Generated_Image_6e3qtm6e3qtm6e3q%20(1).png" },
+            { name: "Mahindra Bolero", size: "8 ft", type: "Open", photo: "Gemini_Generated_Image_6e3qtm6e3qtm6e3q.png" }
         ];
 
         let goods = [
@@ -490,12 +504,12 @@
         ];
 
         const partners = [
-            { name: "Prunagiri Transport Company", logo: "" },
-            { name: "Bareilly Logistic Packers", logo: "" },
+            { name: "Prunagiri Transport Company", logo: "purnagiritransport.jpg" },
+            { name: "Bareilly Logistic Packers", logo: "bareilly%20transport.jpg" },
             { name: "New Packer Mover", logo: "" },
-            { name: "National Transport Co.", logo: "" },
-            { name: "SafeMove Logistics", logo: "" },
-            { name: "Express Cargo", logo: "" }
+            // { name: "National Transport Co.", logo: "" },
+            // { name: "SafeMove Logistics", logo: "" },
+            // { name: "Express Cargo", logo: "" }
         ];
 
         document.addEventListener('DOMContentLoaded', () => {
@@ -804,16 +818,10 @@
             renderGoods();
             renderPartners();
             observeElements();
-            
-            // START: Removed JS for About Us images (now set in HTML)
-            // const aboutImages = document.querySelectorAll('#about img');
-            // aboutImages[0].src = generateImagePlaceholder(...);
-            // aboutImages[1].src = generateImagePlaceholder(...);
-            // aboutImages[2].src = generateImagePlaceholder(...);
-            // END: Removed JS for About Us images
         });
 
     </script>
 </body>
 </html>
+
 
