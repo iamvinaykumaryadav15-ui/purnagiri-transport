@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Movers India Group - Around the world, around the clock</title>
+    <!-- 🔹 Title Updated -->
+    <title>My Movers India - Around the world, around the clock</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -27,14 +28,9 @@
                         'deep-orange': '#FF6600',
                     },
                     animation: {
-                        // 'hero-pan': 'hero-pan 20s linear infinite alternate', // Removed
                         'partner-scroll': 'partner-scroll 40s linear infinite',
                     },
                     keyframes: {
-                        // 'hero-pan': { // Removed
-                        //     '0%': { 'background-position': '0% 50%' },
-                        //     '100%': { 'background-position': '100% 50%' },
-                        // },
                         'partner-scroll': {
                             '0%': { transform: 'translateX(0)' },
                             '100%': { transform: 'translateX(-100%)' },
@@ -135,11 +131,14 @@
 
     <header id="header" class="bg-white sticky top-0 left-0 right-0 z-50 transition-all duration-300 shadow-sm">
         <nav class="container mx-auto px-4 lg:px-6 py-4 flex justify-between items-center">
-            <a href="#home" class="text-royal-blue flex items-center gap-2">
-                <img src="mypackerlogo.jpg" alt="My Movers India Group Logo" class="h-10">
-                <div>
-                    <h1 class="text-2xl font-bold">My Movers India Group</h1>
-                    <p class="text-sm text-deep-orange font-medium">“Around the world, around the clock”</p>
+            <!-- 🔹 TASKS 1 & 2: Logo resized and Title Redesigned -->
+            <a href="#home" class="text-royal-blue flex items-center gap-3">
+                <!-- 1. Logo size increased from h-10 to h-16 -->
+                <img src="mypackerlogo.png" alt="My Movers India Logo" class="h-16">
+                <!-- 2. New two-line, two-color title structure -->
+                <div style="font-family: 'Inter', sans-serif;" class="flex flex-col justify-center">
+                    <span class="text-2xl lg:text-3xl font-bold text-royal-blue leading-tight">My Movers India</span>
+                    <span class="text-xl lg:text-2xl font-semibold text-deep-orange pl-12 lg:pl-16">Groups</span>
                 </div>
             </a>
             
@@ -158,7 +157,7 @@
             </button>
         </nav>
         
-        <div id="mobile-menu" class="hidden lg:hidden flex-col bg-white shadow-lg absolute top-[84px] left-0 w-full z-40">
+        <div id="mobile-menu" class="hidden lg:hidden flex-col bg-white shadow-lg absolute top-[100px] left-0 w-full z-40"> <!-- Adjusted top position for new header height -->
             <a href="#home" class="block py-3 px-6 text-gray-700 hover:bg-gray-100 mobile-nav-link">Home</a>
             <a href="#vehicles" class="block py-3 px-6 text-gray-700 hover:bg-gray-100 mobile-nav-link">Vehicles Available</a>
             <a href="#goods" class="block py-3 px-6 text-gray-700 hover:bg-gray-100 mobile-nav-link">Goods Available</a>
@@ -177,7 +176,8 @@
                     
                     <div class="swiper-slide h-full flex items-center justify-center" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('teammovers.png');">
                         <div class="text-center p-4">
-                            <h1 class="text-4xl md:text-6xl font-extrabold mb-4" style="text-shadow: 2px 2px 8px rgba(0,0,0,0.7);">My Movers India Group</h1>
+                            <!-- 🔹 TASK 5: Hero Text Updated -->
+                            <h1 class="text-4xl md:text-6xl font-extrabold mb-4" style="text-shadow: 2px 2px 8px rgba(0,0,0,0.7);">My Movers India</h1>
                             <p class="text-xl md:text-2xl mb-8 font-light italic">“Around the world, around the clock”</p>
                             <div class="flex flex-col sm:flex-row justify-center gap-4">
                                 <button id="open-quote-modal-hero" class="bg-deep-orange text-white py-3 px-8 rounded-full font-semibold text-lg hover:bg-orange-600 transition duration-300 transform hover:scale-105 shadow-lg">
@@ -249,11 +249,13 @@
                     </select>
                 </div>
 
+                <!-- 🔹 FIX: Yeh line missing thi, jisse error aa raha tha -->
                 <div id="vehicle-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Vehicle cards will be injected here by JavaScript --></div>
-                
+                    <!-- Vehicle cards will be injected here by JavaScript -->
+                </div>
+
                 <div class="text-center mt-12 reveal">
-                    <button id="toggle-vehicle-form" class="bg-gray-700 text-white py-2 px-6 rounded-lg font-medium hover:bg-gray-800 transition">
+                    <button id="toggle-vehicle-form" class="bg-gray-700 text-white py-2 px-6 rounded-lg font-medium hover:bg-gray-800 transition hidden">
                         Admin: Add New Vehicle
                     </button>
                 </div>
@@ -285,7 +287,7 @@
                     <!-- Goods cards will be injected here by JavaScript --></div>
                 
                 <div class="text-center mt-12 reveal">
-                    <button id="toggle-goods-form" class="bg-gray-700 text-white py-2 px-6 rounded-lg font-medium hover:bg-gray-800 transition">
+                    <button id="toggle-goods-form" class="bg-gray-700 text-white py-2 px-6 rounded-lg font-medium hover:bg-gray-800 transition hidden">
                         Admin: Add New Goods
                     </button>
                 </div>
@@ -318,15 +320,17 @@
 
         <section id="about" class="py-20 bg-gray-50">
             <div class="container mx-auto px-4 lg:px-6">
-                <h2 class="text-3xl md:text-4xl font-bold text-center text-royal-blue mb-12 reveal">About My Movers India Group</h2>
+                <!-- 🔹 TASK 6: About Section Title Updated -->
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-royal-blue mb-12 reveal">About My Movers India</h2>
                 <div class="flex flex-col lg:flex-row items-center gap-12">
                     <div class="lg:w-1/2 reveal">
+                        <!-- 🔹 TASK 6: About Section Text Updated -->
                         <div id="about-text-short" class="text-lg text-gray-700 leading-relaxed space-y-4">
-                            <p>My Movers India Group is a premier name in the transport and logistics industry, built on a foundation of trust, reliability, and unparalleled customer service. With years of experience, our mission is to provide seamless and stress-free moving solutions, whether you're moving across the city or across the country.</p>
+                            <p>My Movers India is a premier name in the transport and logistics industry, built on a foundation of trust, reliability, and unparalleled customer service. With years of experience, our mission is to provide seamless and stress-free moving solutions, whether you're moving across the city or across the country.</p>
                             <p>We understand that every move is unique, and our dedicated team of professionals is equipped to handle all your requirements with precision and care. "Around the world, around the clock," we are always ready to serve you.</p>
                         </div>
                         <div id="about-text-full" class="hidden text-lg text-gray-700 leading-relaxed space-y-4">
-                            <p>My Movers India Group is a premier name in the transport and logistics industry, built on a foundation of trust, reliability, and unparalleled customer service. With years of experience, our mission is to provide seamless and stress-free moving solutions, whether you're moving across the city or across the country.</p>
+                            <p>My Movers India is a premier name in the transport and logistics industry, built on a foundation of trust, reliability, and unparalleled customer service. With years of experience, our mission is to provide seamless and stress-free moving solutions, whether you're moving across the city or across the country.</p>
                             <p>We understand that every move is unique, and our dedicated team of professionals is equipped to handle all your requirements with precision and care. "Around the world, around the clock," we are always ready to serve you.</p>
                             <p>Our fleet of modern, well-maintained vehicles ensures the safe and timely delivery of your goods. From household furniture and electronics to heavy machinery and commercial cargo, we have the expertise and the resources to manage it all. We pride ourselves on our transparent pricing, professional conduct, and commitment to excellence, making us the preferred choice for thousands of satisfied customers.</p>
                         </div>
@@ -420,7 +424,8 @@
         <div class="container mx-auto px-4 lg:px-6">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
                 <div>
-                    <h3 class="text-2xl font-bold mb-2">My Movers India Group</h3>
+                    <!-- 🔹 TASK 6: Footer Title Updated -->
+                    <h3 class="text-2xl font-bold mb-2">My Movers India</h3>
                     <p class="text-sm text-gray-300 italic">“Around the world, around the clock”</p>
                 </div>
                 
@@ -458,8 +463,9 @@
             </div>
             
             <div class="border-t border-blue-700 pt-8 text-center text-gray-400">
-                <p>© 2025 My Movers India Group. All Rights Reserved.</p>
-                <p class="text-sm mt-1">Developed by Gemini</p>
+                <!-- 🔹 TASK 6: Footer Copyright Updated -->
+                <p>© 2025 My Movers India. All Rights Reserved.</p>
+                <p class="text-sm mt-1"><a href="#" id="admin-login" class="hover:text-white transition-colors">Admin Login</a> | Developed by Gemini</p>
             </div>
         </div>
     </footer>
@@ -484,6 +490,21 @@
         </div>
     </div>
 
+    <!-- 🔹 Naya Admin Login Modal -->
+    <div id="admin-login-modal" class="hidden fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 p-4">
+        <div class="bg-white rounded-lg shadow-2xl p-8 max-w-sm w-full relative">
+            <button id="close-admin-login-modal" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-2xl">
+                ×
+            </button>
+            <h3 class="text-2xl font-bold text-royal-blue mb-6 text-center">Admin Login</h3>
+            <form id="admin-login-form" class="space-y-4">
+                <input type="password" id="admin-passcode-input" placeholder="Enter passcode" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-royal-blue" required>
+                <p id="admin-login-error" class="text-red-500 text-sm hidden">Invalid passcode. Please try again.</p>
+                <button type="submit" class="w-full bg-royal-blue text-white py-3 rounded-lg font-semibold hover:bg-blue-800 transition">Login</button>
+            </form>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
     <script>
@@ -503,17 +524,20 @@
             { desc: "Electronics & Appliances", from: "Bangalore", to: "Kolkata", companyLogo: "", load: "4 Tons", photo: "" }
         ];
 
+        // 🔹 TASK 3: Updated partners array with new 'id' for root linking
         const partners = [
-            { name: "Prunagiri Transport Company", logo: "purnagiritransport.jpg" },
-            { name: "Bareilly Logistic Packers", logo: "bareilly%20transport.jpg" },
-            { name: "New Packer Mover", logo: "" },
-            // { name: "National Transport Co.", logo: "" },
-            // { name: "SafeMove Logistics", logo: "" },
-            // { name: "Express Cargo", logo: "" }
+            { name: "Purnagiri Transport Company", logo: "purnagiritransport.jpg", id: "purnagiritransport" },
+            { name: "Bareilly Logistic Packers", logo: "bareilly%20transport.jpg", id: "bareillypacker" },
+            { name: "New Packer Mover", logo: "", id: "newpacker" },
         ];
 
         document.addEventListener('DOMContentLoaded', () => {
             
+            // --- 🔹 Admin Passcode ---
+            // Yahan apna passcode set ya reset karein
+            const ADMIN_PASSCODE = 'admin123'; 
+            // --- ----------------- ---
+
             // --- Element Selection ---
             const loader = document.getElementById('loader');
             const header = document.getElementById('header');
@@ -544,11 +568,20 @@
             const closeQuoteModalBtn = document.getElementById('close-quote-modal');
             const openQuoteModalBtns = [
                 document.getElementById('open-quote-modal-hero'),
-                ...document.querySelectorAll('.open-quote-modal') // Now catches buttons on other slides
+                ...document.querySelectorAll('.open-quote-modal')
             ];
             
             const contactForm = document.getElementById('contact-form');
             const quoteForm = document.getElementById('quote-form');
+            const adminLoginLink = document.getElementById('admin-login'); // 🔹 Admin link select kiya
+
+            // 🔹 Naye Admin Modal elements
+            const adminLoginModal = document.getElementById('admin-login-modal');
+            const closeAdminLoginModal = document.getElementById('close-admin-login-modal');
+            const adminLoginForm = document.getElementById('admin-login-form');
+            const adminPasscodeInp = document.getElementById('admin-passcode-input');
+            const adminLoginError = document.getElementById('admin-login-error');
+            // -------------------------
 
             // --- Hide Loader on Window Load ---
             window.onload = () => {
@@ -556,6 +589,28 @@
                 setTimeout(() => {
                     loader.style.display = 'none';
                 }, 500);
+
+                // 🔹 FIX: Moved Swiper initialization inside window.onload
+                // This ensures the Swiper library is loaded before this code runs.
+                const heroSwiper = new Swiper('.hero-slider', {
+                    loop: true,
+                    effect: 'fade', 
+                    fadeEffect: {
+                        crossFade: true
+                    },
+                    autoplay: {
+                        delay: 5000,
+                        disableOnInteraction: false,
+                    },
+                    pagination: {
+                        el: '.swiper-pagination',
+                        clickable: true,
+                    },
+                    navigation: {
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev',
+                    },
+                });
             };
 
             // --- Sticky Header Shadow ---
@@ -595,26 +650,8 @@
                 });
             });
             
-            // --- Swiper Hero Slider Initialization ---
-            const heroSwiper = new Swiper('.hero-slider', {
-                loop: true,
-                effect: 'fade', // Use 'slide' or 'fade'
-                fadeEffect: {
-                    crossFade: true
-                },
-                autoplay: {
-                    delay: 5000,
-                    disableOnInteraction: false,
-                },
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
-                },
-                navigation: {
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev',
-                },
-            });
+            // --- Swiper Hero Slider Initialization --- (Moved to window.onload)
+            
 
 
             // --- Render Functions ---
@@ -647,12 +684,12 @@
                         </div>
                     </div>
                 `).join('');
-                // Request images for vehicle cards
+                
                 document.querySelectorAll('.vehicle-image').forEach(img => {
-                    if (!img.src.includes('placeholder')) return; // Only replace placeholders
+                    if (!img.src.includes('placeholder')) return; 
                     const vehicleName = img.dataset.name;
                     const vehicleType = img.dataset.type;
-                    img.src = generateImagePlaceholder(`A photorealistic image of a ${vehicleName} transport vehicle, type ${vehicleType}, for My Movers India Group. Clean, professional style, royal blue and orange accents.`);
+                    img.src = generateImagePlaceholder(`A photorealistic image of a ${vehicleName} transport vehicle, type ${vehicleType}, for My Movers India. Clean, professional style, royal blue and orange accents.`);
                 });
                 observeElements();
             }
@@ -669,7 +706,7 @@
                         </div>
                     </div>
                 `).join('');
-                // Request images for goods cards
+                
                 document.querySelectorAll('.goods-image').forEach(img => {
                     if (!img.src.includes('placeholder')) return;
                     const description = img.dataset.description;
@@ -685,13 +722,20 @@
                 observeElements();
             }
             
+            // 🔹 TASK 3: Updated Partner Rendering Function
             function renderPartners() {
                 const partnerHTML = partners.map(p => `
-                    <div class="flex-shrink-0 w-64 mx-4 flex flex-col items-center justify-center p-6 bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow">
-                        <img src="${p.logo || 'https://via.placeholder.com/200x100.png?text=Loading...'}" alt="${p.name}" class="h-16 object-contain mb-4 partner-logo-image" data-name="${p.name}">
-                        <p class="text-gray-700 font-semibold text-center">${p.name}</p>
-                    </div>
+                    <!-- Each partner is now a clickable link with hover effects -->
+                    <a href="${p.id}.html" 
+                       class="flex-shrink-0 w-64 mx-4 flex flex-col items-center justify-center p-6 bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-105 group">
+                        <img src="${p.logo || `https://placehold.co/200x100/0033A0/FFFFFF?text=${encodeURIComponent(p.name)}`}" 
+                             alt="${p.name}" 
+                             class="h-16 object-contain mb-4 partner-logo-image" 
+                             data-name="${p.name}">
+                        <p class="text-gray-700 font-semibold text-center group-hover:text-royal-blue transition-colors">${p.name}</p>
+                    </a>
                 `).join('');
+                
                 // Duplicate for seamless scroll
                 partnerCarousel.innerHTML = partnerHTML + partnerHTML;
                 partnerCarousel.classList.add('animate-partner-scroll');
@@ -699,7 +743,8 @@
                 document.querySelectorAll('.partner-logo-image').forEach(img => {
                     if (!img.src.includes('placeholder')) return;
                     const partnerName = img.dataset.name;
-                    img.src = generateImagePlaceholder(`A professional logo for a transport and logistics company named "${partnerName}". Clean, modern, royal blue and orange color scheme.`);
+                    // Use the same placehold.co logic as above for consistency
+                    img.src = `https://placehold.co/200x100/0033A0/FFFFFF?text=${encodeURIComponent(partnerName)}`;
                 });
             }
 
@@ -718,7 +763,7 @@
                     name: document.getElementById('vehicle-name').value,
                     size: document.getElementById('vehicle-size').value,
                     type: document.getElementById('vehicle-type').value,
-                    photo: generateImagePlaceholder(`A photorealistic image of a ${document.getElementById('vehicle-name').value} transport vehicle, type ${document.getElementById('vehicle-type').value}, for My Movers India Group. Clean, professional style, royal blue and orange accents.`)
+                    photo: generateImagePlaceholder(`A photorealistic image of a ${document.getElementById('vehicle-name').value} transport vehicle, type ${document.getElementById('vehicle-type').value}, for My Movers India. Clean, professional style, royal blue and orange accents.`)
                 };
                 vehicles.push(newVehicle);
                 renderVehicles();
@@ -773,6 +818,8 @@
                 }
             });
 
+            /* 🔹 FIX: Yahan se poora purana, duplicate admin logic block (jo HTML comment mein tha) hata diya gaya hai. */
+            
             // --- Form Submit Handlers (to prevent default and show message) ---
             function handleFormSubmit(e) {
                 e.preventDefault();
@@ -786,6 +833,54 @@
             
             contactForm.addEventListener('submit', handleFormSubmit);
             quoteForm.addEventListener('submit', handleFormSubmit);
+
+            /* 🔹 FIX: Yahan bhi ek extra HTML comment tha, use bhi hata diya gaya hai. */
+
+            // --- 🔹 Admin Passcode Logic (Modal Based) - Naya aur Saaf code ---
+            
+            // 1. Close function ko sirf ek baar define karein
+            const closeAdminModal = () => {
+                adminLoginModal.classList.add('hidden');
+                adminPasscodeInp.value = ''; // Close karne par input clear karein
+                adminLoginError.classList.add('hidden');
+            };
+
+            // 2. Login link par click karke modal kholein
+            adminLoginLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                adminLoginModal.classList.remove('hidden');
+                adminLoginError.classList.add('hidden'); // Error reset karein
+            });
+
+            // 3. Close button (X) par click karke modal band karein
+            closeAdminLoginModal.addEventListener('click', closeAdminModal);
+
+            // 4. Modal ke bahar (overlay) click karke band karein
+            adminLoginModal.addEventListener('click', (e) => {
+                if (e.target === adminLoginModal) {
+                    closeAdminModal();
+                }
+            });
+
+            // 5. Login form submit karne ka logic
+            adminLoginForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const enteredPasscode = adminPasscodeInp.value;
+                
+                if (enteredPasscode === ADMIN_PASSCODE) {
+                    // Passcode Sahi Hai
+                    toggleVehicleForm.classList.remove('hidden');
+                    toggleGoodsForm.classList.remove('hidden');
+                    adminLoginLink.classList.add('hidden'); // Login link chhupayein
+                    closeAdminModal(); // Modal band karein
+                } else {
+                    // Passcode Galat Hai
+                    adminLoginError.classList.remove('hidden'); // Error dikhayein
+                    adminPasscodeInp.value = ''; // Input clear karein
+                }
+            });
+            
+            /* 🔹 FIX: Yahan bhi ek extra HTML comment tha, use bhi hata diya gaya hai. */
 
             // --- Intersection Observer for Animations ---
             let observer;
@@ -808,7 +903,6 @@
 
             // --- Image Generation Helper Function (Updated) ---
             function generateImagePlaceholder(description) {
-                // Return a standard placeholder as the generation function is not implemented
                 const encodedDesc = encodeURIComponent(description.substring(0, 50)); // Limit length
                 return `https://placehold.co/600x400/0033A0/FFFFFF?text=${encodedDesc}`;
             }
@@ -823,5 +917,12 @@
     </script>
 </body>
 </html>
+
+
+
+
+
+
+
 
 
