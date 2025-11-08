@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-R8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Purnagiri Transport Company - My Movers India</title>
     
@@ -57,7 +57,12 @@
     <!-- Simple header for brand consistency -->
     <!-- === HEADER MODIFIED HERE === -->
     <header class="bg-white shadow-sm">
-        <div class="container mx-auto px-4 lg:px-6 py-4 flex flex-wrap justify-between items-center">
+        <!-- 
+          CHANGED: 
+          - Replaced 'flex-wrap' with 'flex-col md:flex-row' to stack on mobile and row on desktop.
+          - Added 'gap-4' for spacing on mobile.
+        -->
+        <div class="container mx-auto px-4 lg:px-6 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
              <!-- Logo -->
              <a href="index.html" class="text-royal-blue flex items-center gap-3">
                 <!-- Using ../ to go up one directory for the logo -->
@@ -67,9 +72,14 @@
                     <span class="text-lg font-semibold text-deep-orange pl-10">Groups</span>
                 </div>
             </a>
-            
-            <!-- Contact Details -->
-            <div class="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 mt-4 sm:mt-0 w-full sm:w-auto justify-center">
+
+            <!-- === MAA Purnagiri IMAGE ADDED TO CORNER === -->
+            <!-- 
+              CHANGED: 
+              - Removed 'mt-4 sm:mt-0' as parent 'gap-4' now handles spacing.
+              - Simplified classes for contact items stacking.
+            -->
+            <div class="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
                 <a href="tel:+918881601221" class="flex items-center justify-center gap-2 text-gray-700 hover:text-royal-blue font-semibold transition-colors text-lg">
                     <i class="fas fa-phone-alt text-royal-blue"></i>
                     <span>+91 88816 01221</span>
@@ -78,6 +88,23 @@
                     <i class="fab fa-whatsapp text-green-600"></i>
                     <span>WhatsApp Us</span>
                 </a>
+                <!-- === GSTIN MOVED HERE === -->
+                <div class="flex items-center justify-center gap-2 text-gray-700 font-semibold text-lg">
+                    <i class="fas fa-file-invoice text-royal-blue"></i>
+                    <span>GSTIN: 09AOAPR1111H1ZB</span>
+                </div>
+                <!-- === END OF GSTIN === -->
+            </div>
+            <!-- === END OF IMAGE ADDITION === -->
+            
+            <!-- Contact Details -->
+            <!-- 
+              CHANGED: 
+              - Removed 'mt-4 sm:mt-0' as parent 'gap-4' now handles spacing.
+            -->
+            <div>
+                <img src="matarani.jpg" alt="Maa Purnagiri" class="h-16"
+                     onerror="this.src='https://placehold.co/150x64/FF6600/FFFFFF?text=Maa+Purnagiri&font=inter'; this.classList.add('h-16');">
             </div>
         </div>
     </header>
@@ -91,6 +118,8 @@
             <!-- Partner Logo (using ../ path) -->
             <img src="purnagiritransport.jpg" alt="Purnagiri Transport Company Logo" class="h-20 max-w-xs mx-auto mb-6 object-contain"
                  onerror="this.src='https://placehold.co/200x80/0033A0/FFFFFF?text=Purnagiri+Transport&font=inter'; this.classList.add('h-20');">
+
+            <!-- === MAA PURNAGIRI IMAGE REMOVED FROM HERE === -->
 
             <!-- Partner Name -->
             <h1 class="text-3xl md:text-4xl font-bold text-royal-blue mb-6">
@@ -124,13 +153,15 @@
                 <p class="text-gray-600 flex items-center justify-center gap-2">
                     <!-- Added hover animation classes -->
                     <i class="fas fa-phone-alt text-deep-orange transition-transform duration-200 hover:scale-110"></i>
-                    <span>+91 12345 67890</span>
-                </D>
+                    <!-- === UPDATED PHONE NUMBER HERE === -->
+                    <span>+91 88816 01221</span>
+                </p>
                 <p class="text-gray-600 flex items-center justify-center gap-2">
                     <!-- Added hover animation classes -->
                     <i class="fas fa-envelope text-deep-orange transition-transform duration-200 hover:scale-110"></i>
                     <span>info@purnagiritransport.com</span>
                 </p>
+                <!-- === GSTIN REMOVED FROM HERE === -->
                 <!-- === GMB LINK ADDED HERE === -->
                 <p class="text-gray-600 flex items-center justify-center gap-2">
                     <!-- Added hover animation classes -->
