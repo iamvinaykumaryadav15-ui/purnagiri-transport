@@ -55,18 +55,33 @@
 <body class="text-gray-800">
 
     <!-- Simple header for brand consistency -->
+    <!-- === HEADER MODIFIED HERE === -->
     <header class="bg-white shadow-sm">
-        <div class="container mx-auto px-4 lg:px-6 py-4">
+        <div class="container mx-auto px-4 lg:px-6 py-4 flex flex-wrap justify-between items-center">
+             <!-- Logo -->
              <a href="index.html" class="text-royal-blue flex items-center gap-3">
                 <!-- Using ../ to go up one directory for the logo -->
-                <img src="mypackerlogo.png" alt="My Movers India Logo" class="h-12">
+                <img src="mypackerlogo.png" alt="My Movers India Logo" class="h-12" onerror="this.src='https://placehold.co/100x48/0033A0/FFFFFF?text=Logo&font=inter'">
                 <div style="font-family: 'Inter', sans-serif;" class="flex flex-col justify-center">
                     <span class="text-xl font-bold text-royal-blue leading-tight">My MoversIndia</span>
                     <span class="text-lg font-semibold text-deep-orange pl-10">Groups</span>
                 </div>
             </a>
+            
+            <!-- Contact Details -->
+            <div class="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 mt-4 sm:mt-0 w-full sm:w-auto justify-center">
+                <a href="tel:+918881601221" class="flex items-center justify-center gap-2 text-gray-700 hover:text-royal-blue font-semibold transition-colors text-lg">
+                    <i class="fas fa-phone-alt text-royal-blue"></i>
+                    <span>+91 88816 01221</span>
+                </a>
+                <a href="https://wa.me/918881601221" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 text-gray-700 hover:text-green-600 font-semibold transition-colors text-lg">
+                    <i class="fab fa-whatsapp text-green-600"></i>
+                    <span>WhatsApp Us</span>
+                </a>
+            </div>
         </div>
     </header>
+    <!-- === END OF HEADER MODIFICATION === -->
 
     <!-- 🔹 TASK 4: Partner Detail Page Content -->
     <main class="container mx-auto px-4 py-16 lg:py-24">
@@ -75,17 +90,33 @@
             
             <!-- Partner Logo (using ../ path) -->
             <img src="purnagiritransport.jpg" alt="Purnagiri Transport Company Logo" class="h-20 max-w-xs mx-auto mb-6 object-contain"
-                 onerror="this.src='https://placehold.co/200x100/0033A0/FFFFFF?text=Purnagiri+Transport'; this.classList.add('h-20'); this.classList.remove('h-20');">
+                 onerror="this.src='https://placehold.co/200x80/0033A0/FFFFFF?text=Purnagiri+Transport&font=inter'; this.classList.add('h-20');">
 
             <!-- Partner Name -->
             <h1 class="text-3xl md:text-4xl font-bold text-royal-blue mb-6">
                 Purnagiri Transport Company
             </h1>
 
-            <!-- Partner Description -->
-            <p class="text-lg text-gray-700 leading-relaxed mb-8">
-                Purnagiri Transport Company is a professional packers and movers company offering reliable transport and relocation services across India.
+            <!-- === DESCRIPTION MODIFIED HERE === -->
+            <!-- New "About" section -->
+            <div class="text-left space-y-4 mb-8">
+                <h2 class="text-2xl font-bold text-gray-800 text-center mb-6">
+                    🏆 About Purnagiri Transport Company – Best Packers and Movers in India
+                </h2>
+                <p class="text-gray-700 leading-relaxed">
+                    Purnagiri Transport Company is one of India’s most trusted and affordable packers and movers, providing safe, reliable, and on-time relocation services. We specialize in household shifting, office relocation, car and bike transport, and warehousing solutions — all at the best market rates. Our professional team ensures 100% customer satisfaction through careful packing, secure loading, and fast delivery. Whether you’re moving locally or across states, we guarantee a smooth, stress-free moving experience with transparent pricing, door-to-door delivery, and 24/7 customer support.
+                </p>
+                <p class="text-gray-700 leading-relaxed font-semibold italic">
+                    Choose Purnagiri Transport Company — where your belongings move safely, swiftly, and affordably!
+                </p>
+            </div>
+            
+            <!-- New Tagline -->
+            <p class="text-xl font-bold text-royal-blue mb-8">
+                📦 Best Packers & Movers | Lowest Prices | All India Service | Trusted Since 2010
             </p>
+            <!-- === END OF DESCRIPTION MODIFICATION === -->
+
 
             <!-- Contact Information -->
             <div class="border-t border-b border-gray-200 py-6 mb-8 space-y-4">
@@ -94,7 +125,7 @@
                     <!-- Added hover animation classes -->
                     <i class="fas fa-phone-alt text-deep-orange transition-transform duration-200 hover:scale-110"></i>
                     <span>+91 12345 67890</span>
-                </p>
+                </D>
                 <p class="text-gray-600 flex items-center justify-center gap-2">
                     <!-- Added hover animation classes -->
                     <i class="fas fa-envelope text-deep-orange transition-transform duration-200 hover:scale-110"></i>
