@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bareilly Logistic Packers - My Movers India</title>
     
+    <!-- 🔹 TASK 4: Reusing main site styles -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Using Font Awesome 6 all.min.css, which includes solid (fas) and brands (fab) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script>
         tailwind.config = {
@@ -30,42 +32,94 @@
             font-family: 'Inter', sans-serif;
             background-color: #f8f9fa; /* Matching light gray background */
         }
+        /* Style for WhatsApp icon color */
+        .fa-whatsapp {
+            color: #25D366;
+        }
     </style>
 </head>
 <body class="text-gray-800">
 
+    <!-- Simple header with contact info -->
     <header class="bg-white shadow-sm">
-        <div class="container mx-auto px-4 lg:px-6 py-4">
+        <div class="container mx-auto px-4 lg:px-6 py-4 flex justify-between items-center">
+             <!-- Logo -->
              <a href="../index.html" class="text-royal-blue flex items-center gap-3">
-                <img src="mypackerlogo.png" alt="My Movers India Logo" class="h-12">
+                <!-- Using ../ to go up one directory for the logo -->
+                <img src="../mypackerlogo.png" alt="My Movers India Logo" class="h-12">
                 <div style="font-family: 'Inter', sans-serif;" class="flex flex-col justify-center">
-                    <span class="text-xl font-bold text-royal-blue leading-tight">My MoversIndia</span>
-                    <span class="text-lg font-semibold text-deep-orange pl-10">Groups</span>
+                    <span class="text-xl font-bold text-royal-blue leading-tight">My Movers</span>
+                    <span class="text-lg font-semibold text-deep-orange pl-10">India</span>
                 </div>
             </a>
+
+            <!-- === ADDED HEADER CONTACTS === -->
+            <div class="hidden md:flex items-center gap-6">
+                <a href="tel:+919760418539" class="flex items-center gap-2 text-gray-700 hover:text-royal-blue font-semibold">
+                    <i class="fas fa-phone-alt text-deep-orange"></i>
+                    <span>+91 9760418539</span>
+                </a>
+                <a href="https://wa.me/919760418539" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-gray-700 hover:text-royal-blue font-semibold">
+                    <i class="fab fa-whatsapp text-lg"></i>
+                    <span>WhatsApp</span>
+                </a>
+            </div>
+            <!-- === END OF HEADER CONTACTS === -->
         </div>
     </header>
 
+    <!-- 🔹 TASK 4: Partner Detail Page Content -->
     <main class="container mx-auto px-4 py-16 lg:py-24">
-        <div class="max-w-3xl mx-auto bg-white p-8 md:p-12 rounded-lg shadow-lg text-center">
+        <!-- Removed text-center from this main wrapper -->
+        <div class="max-w-3xl mx-auto bg-white p-8 md:p-12 rounded-lg shadow-lg">
             
+            <!-- Partner Logo (still centered) -->
             <img src="bareilly%20transport.jpg" alt="Bareilly Logistic Packers Logo" class="h-20 max-w-xs mx-auto mb-6 object-contain"
                  onerror="this.src='https://placehold.co/200x100/0033A0/FFFFFF?text=Bareilly+Logistic'; this.classList.add('h-20'); this.classList.remove('h-20');">
 
-            <h1 class="text-3xl md:text-4xl font-bold text-royal-blue mb-6">
+            <!-- Partner Name (still centered) -->
+            <h1 class="text-3xl md:text-4xl font-bold text-royal-blue mb-6 text-center">
                 Bareilly Logistic Packers
             </h1>
 
-            <p class="text-lg text-gray-700 leading-relaxed mb-8">
-                Bareilly Logistic Packers is a professional packers and movers company offering reliable transport and relocation services across India.
-            </p>
+            <!-- === REPLACED DESCRIPTION WITH NEW TEXT (LEFT-ALIGNED) === -->
+            <div class="text-left text-gray-700 leading-relaxed mb-8 space-y-5">
+                <h2 class="text-2xl font-bold text-royal-blue mb-3">
+                    🏆 About Bareilly Packers and Movers – Best Packers and Movers in India
+                </h2>
+                <p>
+                    Bareilly Packers and Movers is one of India’s most trusted and affordable relocation companies, offering safe, reliable, and on-time moving services across the country. We specialize in household shifting, office relocation, car and bike transport, and secure warehousing solutions — all at the best market rates.
+                </p>
+                <p>
+                    Our trained and professional team ensures 100% customer satisfaction with high-quality packing materials, careful handling, and fast delivery. Whether you’re moving locally within Bareilly or anywhere in India, we guarantee a smooth, stress-free relocation experience with transparent pricing, door-to-door service, and 24/7 customer support.
+                </p>
+                <p>
+                    Choose Bareilly Packers and Movers — where your belongings move safely, swiftly, and affordably!
+                </p>
+                <p class="font-semibold text-lg text-gray-800 bg-gray-100 p-4 rounded-lg text-center shadow-inner">
+                    📦 Best Packers & Movers | Lowest Prices | All India Service | Trusted Since 2010
+                </p>
+            </div>
+            <!-- === END OF NEW TEXT === -->
 
-            <div class="border-t border-b border-gray-200 py-6 mb-8 space-y-4">
+
+            <!-- Contact Info (centered) -->
+            <div class="border-t border-b border-gray-200 py-6 mb-8 space-y-4 text-center">
                 <h3 class="text-xl font-semibold text-gray-800">Contact Information</h3>
+                
+                <!-- === UPDATED PHONE NUMBER === -->
                 <p class="text-gray-600 flex items-center justify-center gap-2">
                     <i class="fas fa-phone-alt text-deep-orange"></i>
-                    <span>+91 12345 67890</span>
+                    <a href="tel:+919760418539" class="hover:underline hover:text-deep-orange">+91 9760418539</a>
                 </p>
+
+                <!-- === ADDED WHATSAPP LINK === -->
+                <a href="https://wa.me/919760418539" target="_blank" rel="noopener noreferrer" 
+                   class="text-gray-600 flex items-center justify-center gap-2 hover:text-deep-orange hover:underline">
+                    <i class="fab fa-whatsapp text-deep-orange"></i>
+                    <span>WhatsApp Us</span>
+                </a>
+
                 <p class="text-gray-600 flex items-center justify-center gap-2">
                     <i class="fas fa-envelope text-deep-orange"></i>
                     <span>info@bareillylogistic.com</span>
@@ -78,14 +132,18 @@
                 </a>
             </div>
 
-            <a href="../index.html#partners" 
-               class="inline-block bg-deep-orange text-white py-3 px-8 rounded-full font-semibold text-lg hover:bg-orange-600 transition duration-300 transform hover:scale-105 shadow-lg">
-                &larr; Back to Partners
-            </a>
+            <!-- Back Button (re-centered) -->
+            <div class="text-center">
+                <a href="../index.html#partners" 
+                   class="inline-block bg-deep-orange text-white py-3 px-8 rounded-full font-semibold text-lg hover:bg-orange-600 transition duration-300 transform hover:scale-105 shadow-lg">
+                    &larr; Back to Partners
+                </a>
+            </div>
 
         </div>
     </main>
 
+    <!-- Simple footer for brand consistency -->
     <footer class="bg-royal-blue text-white pt-12 pb-8 mt-16">
         <div class="container mx-auto px-4 lg:px-6 text-center text-gray-400">
             <p>© 2025 My Movers India. All Rights Reserved.</p>
