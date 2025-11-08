@@ -29,11 +29,16 @@
                     // 🔹 Partner scroll animation add ki gayi hai
                     animation: {
                         'partner-scroll': 'partner-scroll 40s linear infinite',
+                        'customer-scroll': 'customer-scroll 40s linear infinite', // 🔹 NEW
                     },
                     keyframes: {
                         'partner-scroll': {
                             '0%': { transform: 'translateX(0)' },
                             '100%': { transform: 'translateX(-50%)' }, // 50% par duplicate scroll
+                        },
+                        'customer-scroll': { // 🔹 NEW
+                            '0%': { transform: 'translateX(-50%)' },
+                            '100%': { transform: 'translateX(0)' },
                         }
                     }
                 }
@@ -147,6 +152,12 @@
             color: #888; font-weight: 500;
             background-size: cover; background-position: center;
         }
+
+        /* 🔹 NEW: Scroll to Top Button */
+        #scroll-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
     </style>
 </head>
 <body class="text-gray-800">
@@ -157,6 +168,33 @@
 
     <!-- 🔹 HEADER with Language Toggle -->
     <header id="header" class="bg-white sticky top-0 left-0 right-0 z-50 transition-all duration-300 shadow-sm">
+        
+        <!-- 🔹 NEW: TOP CONTACT BAR -->
+        <div class="bg-royal-blue text-white border-b border-blue-800">
+            <div class="container mx-auto px-4 lg:px-6 py-2 flex flex-col md:flex-row justify-between items-center text-sm">
+                <!-- Left Side: Phone & WhatsApp -->
+                <div class="flex flex-col sm:flex-row items-center gap-x-4 gap-y-1">
+                    <a href="tel:+919458894587" class="flex items-center gap-2 hover:text-deep-orange transition-colors">
+                        <i class="fas fa-phone fa-fw"></i>
+                        <span>+91-9458894587</span>
+                    </a>
+                    <span class="hidden sm:inline-block text-blue-300">|</span>
+                    <a href="https://wa.me/919458894587" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 hover:text-deep-orange transition-colors">
+                        <i class="fab fa-whatsapp fa-fw"></i>
+                        <span>+91-9458894587</span>
+                    </a>
+                </div>
+                <!-- Right Side: Email -->
+                <div class="mt-1 md:mt-0">
+                    <a href="mailto:ptpackersandmovers@gmail.com" class="flex items-center gap-2 hover:text-deep-orange transition-colors">
+                        <i class="fas fa-envelope fa-fw"></i>
+                        <span>ptpackersandmovers@gmail.com</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- 🔹 END: TOP CONTACT BAR -->
+
         <nav class="container mx-auto px-4 lg:px-6 py-4 flex justify-between items-center">
             <!-- 🔹 ADDED logo-container class -->
             <a href="#home" class="logo-container text-royal-blue flex items-center gap-3">
@@ -234,7 +272,7 @@
                     <div class="swiper-slide h-full flex items-center justify-center" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('Gemini_Generated_Image_6e3qtm6e3qtm6e3q%20(1).png'); background-position: center; background-size: cover;" onerror="this.style.backgroundImage='linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(https://placehold.co/1920x1080/0033A0/FFFFFF?text=Safe+Packing)'">
                         <div class="text-center p-4">
                             <h1 class="text-4xl md:text-6xl font-extrabold mb-4" style="text-shadow: 2px 2px 8px rgba(0,0,0,0.7);" data-key="hero_slide2_title">Safe & Reliable Packing</h1>
-                            <p class="text-xl md:text-2xl mb-8 font-light italic" data-key="hero_slide2_subtitle">Precision and care in every move.</p>
+                            <p class="text-xl md:text-2xl mb-8 font-light" data-key="hero_slide2_subtitle">Precision and care in every move.</p>
                             <a href="#inquiry" class="bg-deep-orange text-white py-3 px-8 rounded-full font-semibold text-lg hover:bg-orange-600 transition duration-300 transform hover:scale-105 shadow-lg" data-key="hero_get_quote">
                                 Get a Quote
                             </a>
@@ -296,8 +334,20 @@
             </div>
         </section>
 
+        <!-- 🔹 NEW: OUR VALUED CUSTOMERS SECTION -->
+        <section id="customers" class="py-20 bg-gray-50">
+            <div class="container mx-auto px-4 lg:px-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-royal-blue mb-12 reveal" data-key="customers_title">Our Valued Customers</h2>
+                <div class="relative w-full overflow-hidden group">
+                    <div id="customer-carousel" class="flex w-max animate-customer-scroll group-hover:[animation-play-state:paused]">
+                        <!-- Customer logos will be injected here by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- 🔹 YOUTUBE VIDEO SECTION (Updated: Chhota size, Hardcoded link) -->
-        <section id="video" class="py-20 bg-gray-50">
+        <section id="video" class="py-20 bg-white"> <!-- 🔹 Changed background to white for contrast -->
             <div class="container mx-auto px-4 lg:px-6">
                 <!-- 🔹 Title updated, no longer links to YouTube -->
                 <a class="group block text-center mb-12 reveal">
@@ -424,7 +474,7 @@
                         <!-- Team Member 3 -->
                         <div class="reveal text-center">
                             <img src="manager.jpg" alt="Operations Manager" class="rounded-full shadow-lg w-48 h-48 object-cover mx-auto" onerror="this.src='https://placehold.co/192x192/CCCCCC/FFFFFF?text=Photo'">
-                            <h4 class="text-xl font-bold text-royal-blue mt-4">Operations Manager</h4>
+                            <h4 class="text-xl font-bold text-royal-blue mt-4">Kritika verma</h4>
                             <p class="text-gray-600 font-medium" data-key="about_team_role_3">Operations Manager, My MoversIndia</p>
                         </div>
                     </div>
@@ -432,9 +482,9 @@
 
                 <!-- 🔹 Image grid of trucks remains -->
                 <div class="lg:w-full grid grid-cols-1 sm:grid-cols-3 gap-4 reveal">
-                    <img src="Gemini_Generated_Image_6e3qtm6e3qtm6e3q%20(1).png" alt="Truck 1" class="rounded-lg shadow-lg w-full h-40 object-cover" onerror="this.src='https://placehold.co/400x300/CCCCCC/FFFFFF?text=Truck+1'">
-                    <img src="Gemini_Generated_Image_6e3qtm6e3qtm6e3q%20(2).png" alt="Truck 2" class="rounded-lg shadow-lg w-full h-40 object-cover" onerror="this.src='https://placehold.co/400x300/CCCCCC/FFFFFF?text=Truck+2'">
-                    <img src="Gemini_Generated_Image_6e3qtm6e3qtm6e3q%20(3).png" alt="Truck 3" class="rounded-lg shadow-lg w-full h-40 object-cover" onerror="this.src='https://placehold.co/400x300/CCCCCC/FFFFFF?text=Truck+3'">
+                    <img src="Gemini_Generated_Image_mtqtgdmtqtgdmtqt.png" alt="Truck 1" class="rounded-lg shadow-lg w-full h-64 object-cover" onerror="this.src='https://placehold.co/400x300/CCCCCC/FFFFFF?text=Truck+1'">
+                    <img src="Gemini_Generated_Image_mtqtgdmtqtgdmtqt%20(1).png" alt="Truck 2" class="rounded-lg shadow-lg w-full h-64 object-cover" onerror="this.src='https://placehold.co/400x300/CCCCCC/FFFFFF?text=Truck+2'">
+                    <img src="Gemini_Generated_Image_mtqtgdmtqtgdmtqt%20(2).png" alt="Truck 3" class="rounded-lg shadow-lg w-full h-64 object-cover" onerror="this.src='https://placehold.co/400x300/CCCCCC/FFFFFF?text=Truck+3'">
                 </div>
             </div>
         </section>
@@ -464,6 +514,22 @@
                 </a>
                 <a href="#" class="text-gray-300 hover:text-white transition-colors text-2xl">
                     <i class="fab fa-linkedin-in"></i>
+                </a>
+            </div>
+
+            <!-- 🔹 NEW: Footer Contact Details -->
+            <div class="flex flex-col md:flex-row justify-center items-center gap-x-6 gap-y-3 text-gray-300 mb-8 text-center">
+                <a href="tel:+919458894587" class="flex items-center gap-2 hover:text-white transition-colors">
+                    <i class="fas fa-phone fa-fw"></i>
+                    <span>+91-9458894587</span>
+                </a>
+                <a href="https://wa.me/919458894587" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 hover:text-white transition-colors">
+                    <i class="fab fa-whatsapp fa-fw"></i>
+                    <span>+91-9458894587</span>
+                </a>
+                <a href="mailto:ptpackersandmovers@gmail.com" class="flex items-center gap-2 hover:text-white transition-colors">
+                    <i class="fas fa-envelope fa-fw"></i>
+                    <span>ptpackersandmovers@gmail.com</span>
                 </a>
             </div>
             
@@ -577,6 +643,11 @@
         </div>
     </div>
 
+    <!-- 🔹 NEW: Scroll to Top Button -->
+    <button id="scroll-to-top" class="fixed bottom-6 right-6 bg-deep-orange text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center text-xl opacity-0 invisible transition-all duration-300 hover:bg-orange-600 z-50">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
@@ -617,6 +688,8 @@
                 goods_weight: "Weight:",
                 // Partners 🔹 Add kiya gaya
                 partners_title: "Our Partners",
+                // 🔹 NEW
+                customers_title: "Our Valued Customers",
                 // Video
                 video_title: "Watch Our Services in Action",
                 video_no_video: "No video has been added yet.",
@@ -712,9 +785,11 @@
                 goods_weight: "वजन:",
                 // Partners 🔹 Add kiya gaya
                 partners_title: "हमारे पार्टनर",
+                // 🔹 NEW
+                customers_title: "हमारे मूल्यवान ग्राहक",
                 // Video
                 video_title: "हमारी सेवाओं को देखें",
-                video_no_video: "अभी तक कोई ভিডিও नहीं जोड़ा गया है।",
+                video_no_video: "अभी तक कोई वीडियो नहीं जोड़ा गया है।",
                 // Inquiry
                 inquiry_title: "संपर्क करें",
                 inquiry_form_title: "अपनी आवश्यकता भेजें",
@@ -779,7 +854,7 @@
         const ADMIN_PASSCODE = 'admin123';
         // --- 🔹 Hardcoded Data (Aapke request ke anusaar) ---
         const HARDCODED_VIDEO_FILE = 'purnagiri.mp4'; // 🔹 REPLACED YOUTUBE ID
-        const HARDCODED_WHATSAPP = '918765432101'; // Example Number
+        const HARDCODED_WHATSAPP = '919458894587'; // 🔹 UPDATED NUMBER
         
         // 🔹 Partner list updated with objects (name and logo)
         const HARDCODED_PARTNERS = [
@@ -788,6 +863,19 @@
             { name: 'Bareilly Transport Packer & Mover', logo: 'bareilly%20transport.jpg', link: 'bareillypacker.html' }
         ];
         
+        // 🔹 NEW: Customer Logos
+        const HARDCODED_CUSTOMERS = [
+            "https://images.seeklogo.com/logo-png/47/2/uttar-pradesh-police-logo-png_seeklogo-474106.png",
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Badge_of_the_Indian_Air_Force.png/500px-Badge_of_the_Indian_Air_Force.png",
+            "ChatGPT%20Image%20Nov%208,%202025,%2004_17_27%20PM.png",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQp5irZYE8Y-XuGPtFIacuFv-F4Q86WuCie7g&s", // Duplicate as requested
+            "httpshttps://akm-img-a-in.tosshub.com/aajtak/images/story/201409/crpf-logo_650_090514125706.jpg",
+            "https://upload.wikimedia.org/wikipedia/commons/f/fa/Seal_of_Uttar_Pradesh.svg",
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Government_of_India_logo.svg/1200px-Government_of_India_logo.svg.png",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwCnnFlH7qg7tvtCnvYHqgZhH_2sizN1_vkg&s",
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/BSF_Logo.png/970px-BSF_Logo.png"
+        ];
+
         const state = {
             isAdmin: false,
             currentLang: 'en',
@@ -815,6 +903,7 @@
             const mobileMenuButton = $('#mobile-menu-button');
             const mobileMenu = $('#mobile-menu');
             const mobileNavLinks = $$('.mobile-nav-link');
+            const scrollToTopBtn = $('#scroll-to-top'); // 🔹 NEW
             
             // Language
             const langToggles = [$('#lang-toggle-checkbox'), $('#lang-toggle-checkbox-mobile')];
@@ -854,6 +943,9 @@
             // Partners 🔹 Add kiya gaya
             const partnerCarousel = $('#partner-carousel');
             
+            // 🔹 NEW
+            const customerCarousel = $('#customer-carousel');
+
             // Video
             const videoPlayerContainer = $('#video-player-container');
             
@@ -865,8 +957,10 @@
             
             // 🔹 FIX: Loader ko window.onload se control kiya jayega
             window.onload = () => {
-                loader.style.opacity = '0';
-                setTimeout(() => { loader.style.display = 'none'; }, 500);
+                if (loader) {
+                    loader.style.opacity = '0';
+                    setTimeout(() => { loader.style.display = 'none'; }, 500);
+                }
 
                 // Init Hero Swiper
                 new Swiper('.hero-slider', {
@@ -877,15 +971,32 @@
                 });
             };
 
-            // Sticky Header
+            // Sticky Header & Scroll to Top 🔹 UPDATED
             window.onscroll = () => {
-                header.classList.toggle('shadow-lg', window.scrollY > 20);
-                header.classList.toggle('bg-white/95', window.scrollY > 20);
-                header.classList.toggle('backdrop-blur-sm', window.scrollY > 20);
+                if (header) {
+                    header.classList.toggle('shadow-lg', window.scrollY > 20);
+                }
+                // 🔹 NEW: Scroll to Top logic
+                if (scrollToTopBtn) {
+                    if (window.pageYOffset > 300) {
+                        scrollToTopBtn.classList.add('visible');
+                    } else {
+                        scrollToTopBtn.classList.remove('visible');
+                    }
+                }
             };
 
             // Mobile Menu
-            mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+            // 🔹 FIX: Added null check
+            if (mobileMenuButton) {
+                mobileMenuButton.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                    // 🔹 FIX: Adjust mobile menu top position based on new top bar
+                    // The header's height is now variable. Let's find its actual height.
+                    const headerHeight = header.offsetHeight;
+                    mobileMenu.style.top = `${headerHeight}px`;
+                });
+            }
             mobileNavLinks.forEach(link => link.addEventListener('click', () => mobileMenu.classList.add('hidden')));
 
             // Smooth Scroll
@@ -896,10 +1007,25 @@
                     if(targetId === '#') return;
                     const targetElement = $(targetId);
                     if(targetElement) {
-                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                        // 🔹 FIX: Account for sticky header height
+                        const headerOffset = header.offsetHeight;
+                        const elementPosition = targetElement.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: "smooth"
+                        });
                     }
                 });
             });
+
+            // 🔹 NEW: Scroll to Top Click
+            if (scrollToTopBtn) {
+                scrollToTopBtn.addEventListener('click', () => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
 
             // --- 🔹 HELPER FUNCTIONS ---
             
@@ -917,6 +1043,8 @@
             };
 
             const handleImageUpload = (e, previewEl) => {
+                // 🔹 FIX: Added null check
+                if (!previewEl) return;
                 const file = e.target.files[0];
                 if (file) {
                     const reader = new FileReader();
@@ -941,7 +1069,10 @@
                 document.documentElement.lang = lang;
                 
                 langToggles.forEach(toggle => {
-                    toggle.checked = (lang === 'hi');
+                    // 🔹 FIX: Added null check
+                    if (toggle) {
+                        toggle.checked = (lang === 'hi');
+                    }
                 });
                 
                 const trans = translations[lang];
@@ -964,68 +1095,79 @@
             };
 
             langToggles.forEach(toggle => {
-                toggle.addEventListener('change', (e) => {
-                    setLanguage(e.target.checked ? 'hi' : 'en');
-                });
+                // 🔹 FIX: Added null check
+                if (toggle) {
+                    toggle.addEventListener('change', (e) => {
+                        setLanguage(e.target.checked ? 'hi' : 'en');
+                    });
+                }
             });
 
             // --- 🔹 ADMIN LOGIC ---
 
-            // 🔹 YEH FUNCTION AAPKE PROMPT KE ANUSAAR FIX KIYA GAYA HAI
             const toggleAdminView = (isAdmin) => {
                 state.isAdmin = isAdmin;
                 
-                // 🔹 FIX (as per your request): 
-                // 1. 'admin-mode' class ko body par turant apply kiya ja raha hai.
                 document.body.classList.toggle('admin-mode', isAdmin); 
                 
-                if(isAdmin) {
-                    adminLoginLink.classList.add('hidden');
-                } else {
-                    adminLoginLink.classList.remove('hidden');
+                // 🔹 FIX: Added null check
+                if (adminLoginLink) {
+                    if(isAdmin) {
+                        adminLoginLink.classList.add('hidden');
+                    } else {
+                        adminLoginLink.classList.remove('hidden');
+                    }
                 }
                 
-                // 🔹 FIX (as per your request): 
-                // 2. Admin login par, data (vehicles/goods) ko turant re-render kiya ja raha hai.
-                // Isse existing items ko edit/remove buttons ke saath dikhaya jaata hai.
                 renderAll();
             };
 
-            adminLoginLink.addEventListener('click', (e) => {
-                e.preventDefault();
-                adminLoginModal.classList.add('flex');
-                adminLoginError.classList.add('hidden');
-            });
-            closeAdminLoginModal.addEventListener('click', () => adminLoginModal.classList.remove('flex'));
-            adminLoginModal.addEventListener('click', (e) => {
-                if(e.target === adminLoginModal) adminLoginModal.classList.remove('flex');
-            });
-
-            adminLoginForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                if (adminPasscodeInp.value === ADMIN_PASSCODE) {
-                    toggleAdminView(true); // 🔹 Yahan se fix call ho raha hai
-                    adminLoginModal.classList.remove('flex');
-                    adminPasscodeInp.value = '';
-                    // Ensure full re-render after admin login
-                    renderAll();
-                } else {
-                    adminLoginError.classList.remove('hidden');
-                }
-            });
+            // 🔹 FIX: Added null checks for all admin login elements
+            if (adminLoginLink) {
+                adminLoginLink.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    if (adminLoginModal) adminLoginModal.classList.add('flex');
+                    if (adminLoginError) adminLoginError.classList.add('hidden');
+                });
+            }
+            if (closeAdminLoginModal) {
+                closeAdminLoginModal.addEventListener('click', () => adminLoginModal.classList.remove('flex'));
+            }
+            if (adminLoginModal) {
+                adminLoginModal.addEventListener('click', (e) => {
+                    if(e.target === adminLoginModal) adminLoginModal.classList.remove('flex');
+                });
+            }
+            if (adminLoginForm) {
+                adminLoginForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    if (adminPasscodeInp.value === ADMIN_PASSCODE) {
+                        toggleAdminView(true);
+                        if (adminLoginModal) adminLoginModal.classList.remove('flex');
+                        if (adminPasscodeInp) adminPasscodeInp.value = '';
+                        renderAll();
+                    } else {
+                        if (adminLoginError) adminLoginError.classList.remove('hidden');
+                    }
+                });
+            }
 
             // --- 🔹 RENDER FUNCTIONS ---
             
             const renderAll = () => {
                 renderVehicles();
                 renderGoods();
-                renderPartners(); // 🔹 Add kiya gaya
+                renderPartners();
+                renderCustomers(); // 🔹 NEW
                 renderVideo();
                 renderInquiryForm(); // Updated function
                 observeElements(); 
             };
 
             const renderVehicles = () => {
+                // 🔹 FIX: Added null checks
+                if (!vehicleGrid || !noVehiclesMsg) return;
+
                 if (db.vehicles.length === 0) {
                     vehicleGrid.innerHTML = '';
                     noVehiclesMsg.style.display = 'block';
@@ -1069,6 +1211,9 @@
             };
             
             const renderGoods = () => {
+                // 🔹 FIX: Added null checks
+                if (!goodsGrid || !noGoodsMsg) return;
+
                 if (db.goods.length === 0) {
                     goodsGrid.innerHTML = '';
                     noGoodsMsg.style.display = 'block';
@@ -1121,7 +1266,7 @@
                              alt="${p.name}" 
                              class="h-16 object-contain mb-4"
                              onerror="this.src='https://placehold.co/200x100/0033A0/FFFFFF?text=Partner'">
-                        <p class="text-gray-700 font-semibold text-center">${p.name}</p
+                        <p class="text-gray-700 font-semibold text-center">${p.name}</p>
                     </a>
                 `).join('');
                 
@@ -1129,6 +1274,23 @@
                 if (partnerCarousel) {
                     partnerCarousel.innerHTML = partnerHTML + partnerHTML;
                 }
+            };
+
+            // 🔹 NEW: Customer logo render function
+            const renderCustomers = () => {
+                if (!customerCarousel) return;
+
+                const customerHTML = HARDCODED_CUSTOMERS.map(logoUrl => `
+                    <div class="flex-shrink-0 w-40 mx-2 flex items-center justify-center p-2 bg-white rounded-lg shadow-md h-20">
+                        <img src="${logoUrl}" 
+                             alt="Customer Logo" 
+                             class="h-full w-auto max-w-full object-contain" 
+                             onerror="this.src='https://placehold.co/200x80/CCCCCC/FFFFFF?text=Logo'">
+                    </div>
+                `).join('');
+                
+                // Duplicate for seamless scroll
+                customerCarousel.innerHTML = customerHTML + customerHTML;
             };
 
             // 🔹 VIDEO RENDER FUNCTION (UPDATED)
@@ -1157,6 +1319,9 @@
             
             // Inquiry Form (Hardcoded Partners - UPDATED for object)
             const renderInquiryForm = () => {
+                // 🔹 FIX: Added null check
+                if (!partnerRadioGroup) return;
+
                 const trans = translations[state.currentLang];
                 
                 // Public Inquiry Form Radio Buttons
@@ -1178,202 +1343,243 @@
             // --- 🔹 VEHICLE CRUD ---
             
             // Open Modal
-            addVehicleBtn.addEventListener('click', () => {
-                state.editingVehicleId = null;
-                vehicleForm.reset();
-                vehiclePhotoPreview.style.backgroundImage = 'none';
-                vehiclePhotoPreview.dataset.base64 = '';
-                vehiclePhotoPreview.textContent = translations[state.currentLang].form_photo_preview;
-                vehicleModalTitle.textContent = translations[state.currentLang].form_vehicle_add_title;
-                vehicleModal.classList.add('flex');
-            });
-            closeVehicleModal.addEventListener('click', () => vehicleModal.classList.remove('flex'));
-
-            // Edit
-            vehicleGrid.addEventListener('click', (e) => {
-                const editBtn = e.target.closest('.edit-vehicle-btn');
-                if (editBtn) {
-                    const id = editBtn.dataset.id;
-                    const vehicle = db.vehicles.find(v => v.id === id);
-                    if (!vehicle) return;
-                    
-                    state.editingVehicleId = id;
-                    vehicleModalTitle.textContent = translations[state.currentLang].form_vehicle_edit_title;
-                    
-                    $('#vehicle-id-input').value = vehicle.id;
-                    $('#vehicle-name').value = vehicle.name;
-                    $('#vehicle-weight').value = vehicle.weight;
-                    $('#vehicle-rate').value = vehicle.rate;
-                    $('#vehicle-from').value = vehicle.from;
-                    $('#vehicle-to').value = vehicle.to;
-                    $('#vehicle-available').checked = vehicle.available;
-                    
-                    if (vehicle.photo) {
-                        vehiclePhotoPreview.style.backgroundImage = `url(${vehicle.photo})`;
-                        vehiclePhotoPreview.textContent = '';
-                        vehiclePhotoPreview.dataset.base64 = vehicle.photo;
-                    } else {
+            // 🔹 FIX: Added null check
+            if (addVehicleBtn) {
+                addVehicleBtn.addEventListener('click', () => {
+                    state.editingVehicleId = null;
+                    if (vehicleForm) vehicleForm.reset();
+                    if (vehiclePhotoPreview) {
                         vehiclePhotoPreview.style.backgroundImage = 'none';
-                        vehiclePhotoPreview.textContent = translations[state.currentLang].form_photo_preview;
                         vehiclePhotoPreview.dataset.base64 = '';
+                        vehiclePhotoPreview.textContent = translations[state.currentLang].form_photo_preview;
                     }
-                    vehicleModal.classList.add('flex');
-                }
-            });
-            
-            // Delete
-            vehicleGrid.addEventListener('click', (e) => {
-                const deleteBtn = e.target.closest('.delete-vehicle-btn');
-                if (deleteBtn) {
-                    const id = deleteBtn.dataset.id;
-                    if (confirm('Are you sure you want to delete this vehicle?')) {
-                        db.vehicles = db.vehicles.filter(v => v.id !== id);
-                        saveDB();
-                        renderAll();
+                    if (vehicleModalTitle) vehicleModalTitle.textContent = translations[state.currentLang].form_vehicle_add_title;
+                    if (vehicleModal) vehicleModal.classList.add('flex');
+                });
+            }
+            // 🔹 FIX: Added null check
+            if (closeVehicleModal) {
+                closeVehicleModal.addEventListener('click', () => vehicleModal.classList.remove('flex'));
+            }
+
+            // Edit & Delete (Combined listener)
+            // 🔹 FIX: Added null check
+            if (vehicleGrid) {
+                vehicleGrid.addEventListener('click', (e) => {
+                    // Edit
+                    const editBtn = e.target.closest('.edit-vehicle-btn');
+                    if (editBtn) {
+                        const id = editBtn.dataset.id;
+                        const vehicle = db.vehicles.find(v => v.id === id);
+                        if (!vehicle) return;
+                        
+                        state.editingVehicleId = id;
+                        if (vehicleModalTitle) vehicleModalTitle.textContent = translations[state.currentLang].form_vehicle_edit_title;
+                        
+                        // 🔹 FIX: Added null checks for form elements
+                        if ($('#vehicle-id-input')) $('#vehicle-id-input').value = vehicle.id;
+                        if ($('#vehicle-name')) $('#vehicle-name').value = vehicle.name;
+                        if ($('#vehicle-weight')) $('#vehicle-weight').value = vehicle.weight;
+                        if ($('#vehicle-rate')) $('#vehicle-rate').value = vehicle.rate;
+                        if ($('#vehicle-from')) $('#vehicle-from').value = vehicle.from;
+                        if ($('#vehicle-to')) $('#vehicle-to').value = vehicle.to;
+                        if ($('#vehicle-available')) $('#vehicle-available').checked = vehicle.available;
+                        
+                        if (vehiclePhotoPreview) {
+                            if (vehicle.photo) {
+                                vehiclePhotoPreview.style.backgroundImage = `url(${vehicle.photo})`;
+                                vehiclePhotoPreview.textContent = '';
+                                vehiclePhotoPreview.dataset.base64 = vehicle.photo;
+                            } else {
+                                vehiclePhotoPreview.style.backgroundImage = 'none';
+                                vehiclePhotoPreview.textContent = translations[state.currentLang].form_photo_preview;
+                                vehiclePhotoPreview.dataset.base64 = '';
+                            }
+                        }
+                        if (vehicleModal) vehicleModal.classList.add('flex');
                     }
-                }
-            });
+                    
+                    // Delete
+                    const deleteBtn = e.target.closest('.delete-vehicle-btn');
+                    if (deleteBtn) {
+                        const id = deleteBtn.dataset.id;
+                        if (confirm('Are you sure you want to delete this vehicle?')) {
+                            db.vehicles = db.vehicles.filter(v => v.id !== id);
+                            saveDB();
+                            renderAll();
+                        }
+                    }
+                });
+            }
             
             // Save (Add/Edit)
-            vehicleForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                
-                const vehicleData = {
-                    id: state.editingVehicleId || uuid(),
-                    name: $('#vehicle-name').value,
-                    weight: $('#vehicle-weight').value,
-                    rate: $('#vehicle-rate').value,
-                    from: $('#vehicle-from').value,
-                    to: $('#vehicle-to').value,
-                    available: $('#vehicle-available').checked,
-                    photo: vehiclePhotoPreview.dataset.base64 || ''
-                };
+            // 🔹 FIX: Added null check
+            if (vehicleForm) {
+                vehicleForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    
+                    const vehicleData = {
+                        id: state.editingVehicleId || uuid(),
+                        name: $('#vehicle-name').value,
+                        weight: $('#vehicle-weight').value,
+                        rate: $('#vehicle-rate').value,
+                        from: $('#vehicle-from').value,
+                        to: $('#vehicle-to').value,
+                        available: $('#vehicle-available').checked,
+                        photo: vehiclePhotoPreview ? vehiclePhotoPreview.dataset.base64 || '' : ''
+                    };
 
-                if (state.editingVehicleId) {
-                    // Update existing
-                    db.vehicles = db.vehicles.map(v => v.id === state.editingVehicleId ? vehicleData : v);
-                } else {
-                    // Add new
-                    db.vehicles.push(vehicleData);
-                }
-                
-                saveDB();
-                renderAll();
-                vehicleModal.classList.remove('flex');
-            });
+                    if (state.editingVehicleId) {
+                        // Update existing
+                        db.vehicles = db.vehicles.map(v => v.id === state.editingVehicleId ? vehicleData : v);
+                    } else {
+                        // Add new
+                        db.vehicles.push(vehicleData);
+                    }
+                    
+                    saveDB();
+                    renderAll();
+                    if (vehicleModal) vehicleModal.classList.remove('flex');
+                });
+            }
             
             // Photo Preview
-            vehiclePhotoInput.addEventListener('change', (e) => handleImageUpload(e, vehiclePhotoPreview));
+            // 🔹 FIX: Added null check
+            if (vehiclePhotoInput) {
+                vehiclePhotoInput.addEventListener('change', (e) => handleImageUpload(e, vehiclePhotoPreview));
+            }
             
             // --- 🔹 GOODS CRUD ---
             
             // Open Modal
-            addGoodsBtn.addEventListener('click', () => {
-                state.editingGoodsId = null;
-                goodsForm.reset();
-                $('#goods-available').checked = false; // 🔹 FIX: Reset checkbox
-                goodsPhotoPreview.style.backgroundImage = 'none';
-                goodsPhotoPreview.dataset.base64 = '';
-                goodsPhotoPreview.textContent = translations[state.currentLang].form_photo_preview;
-                goodsModalTitle.textContent = translations[state.currentLang].form_goods_add_title;
-                goodsModal.classList.add('flex');
-            });
-            closeGoodsModal.addEventListener('click', () => goodsModal.classList.remove('flex'));
-
-            // Edit
-            goodsGrid.addEventListener('click', (e) => {
-                const editBtn = e.target.closest('.edit-goods-btn');
-                if (editBtn) {
-                    const id = editBtn.dataset.id;
-                    const goods = db.goods.find(g => g.id === id);
-                    if (!goods) return;
-                    
-                    state.editingGoodsId = id;
-                    goodsModalTitle.textContent = translations[state.currentLang].form_goods_edit_title;
-                    
-                    $('#goods-id-input').value = goods.id;
-                    $('#goods-name').value = goods.name;
-                    $('#goods-weight').value = goods.weight;
-                    $('#goods-from').value = goods.from;
-                    $('#goods-to').value = goods.to;
-                    $('#goods-available').checked = goods.available; // 🔹 FIX: Load status on edit
-                    
-                    if (goods.photo) {
-                        goodsPhotoPreview.style.backgroundImage = `url(${goods.photo})`;
-                        goodsPhotoPreview.textContent = '';
-                        goodsPhotoPreview.dataset.base64 = goods.photo;
-                    } else {
+            // 🔹 FIX: Added null check
+            if (addGoodsBtn) {
+                addGoodsBtn.addEventListener('click', () => {
+                    state.editingGoodsId = null;
+                    if (goodsForm) goodsForm.reset();
+                    if ($('#goods-available')) $('#goods-available').checked = false; // 🔹 FIX: Reset checkbox
+                    if (goodsPhotoPreview) {
                         goodsPhotoPreview.style.backgroundImage = 'none';
-                        goodsPhotoPreview.textContent = translations[state.currentLang].form_photo_preview;
                         goodsPhotoPreview.dataset.base64 = '';
+                        goodsPhotoPreview.textContent = translations[state.currentLang].form_photo_preview;
                     }
-                    goodsModal.classList.add('flex');
-                }
-            });
-            
-            // Delete
-            goodsGrid.addEventListener('click', (e) => {
-                const deleteBtn = e.target.closest('.delete-goods-btn');
-                if (deleteBtn) {
-                    const id = deleteBtn.dataset.id;
-                    if (confirm('Are you sure you want to delete this item?')) {
-                        db.goods = db.goods.filter(g => g.id !== id);
-                        saveDB();
-                        renderAll();
+                    if (goodsModalTitle) goodsModalTitle.textContent = translations[state.currentLang].form_goods_add_title;
+                    if (goodsModal) goodsModal.classList.add('flex');
+                });
+            }
+            // 🔹 FIX: Added null check
+            if (closeGoodsModal) {
+                closeGoodsModal.addEventListener('click', () => goodsModal.classList.remove('flex'));
+            }
+
+            // Edit & Delete (Combined listener)
+            // 🔹 FIX: Added null check
+            if (goodsGrid) {
+                goodsGrid.addEventListener('click', (e) => {
+                    // Edit
+                    const editBtn = e.target.closest('.edit-goods-btn');
+                    if (editBtn) {
+                        const id = editBtn.dataset.id;
+                        const goods = db.goods.find(g => g.id === id);
+                        if (!goods) return;
+                        
+                        state.editingGoodsId = id;
+                        if (goodsModalTitle) goodsModalTitle.textContent = translations[state.currentLang].form_goods_edit_title;
+                        
+                        // 🔹 FIX: Added null checks for form elements
+                        if ($('#goods-id-input')) $('#goods-id-input').value = goods.id;
+                        if ($('#goods-name')) $('#goods-name').value = goods.name;
+                        if ($('#goods-weight')) $('#goods-weight').value = goods.weight;
+                        if ($('#goods-from')) $('#goods-from').value = goods.from;
+                        if ($('#goods-to')) $('#goods-to').value = goods.to;
+                        if ($('#goods-available')) $('#goods-available').checked = goods.available; // 🔹 FIX: Load status on edit
+                        
+                        if (goodsPhotoPreview) {
+                            if (goods.photo) {
+                                goodsPhotoPreview.style.backgroundImage = `url(${goods.photo})`;
+                                goodsPhotoPreview.textContent = '';
+                                goodsPhotoPreview.dataset.base64 = goods.photo;
+                            } else {
+                                goodsPhotoPreview.style.backgroundImage = 'none';
+                                goodsPhotoPreview.textContent = translations[state.currentLang].form_photo_preview;
+                                goodsPhotoPreview.dataset.base64 = '';
+                            }
+                        }
+                        if (goodsModal) goodsModal.classList.add('flex');
                     }
-                }
-            });
+                    
+                    // Delete
+                    const deleteBtn = e.target.closest('.delete-goods-btn');
+                    if (deleteBtn) {
+                        const id = deleteBtn.dataset.id;
+                        if (confirm('Are you sure you want to delete this item?')) {
+                            db.goods = db.goods.filter(g => g.id !== id);
+                            saveDB();
+                            renderAll();
+                        }
+                    }
+                });
+            }
             
             // Save (Add/Edit)
-            goodsForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                
-                const goodsData = {
-                    id: state.editingGoodsId || uuid(),
-                    name: $('#goods-name').value,
-                    weight: $('#goods-weight').value,
-                    from: $('#goods-from').value,
-                    to: $('#goods-to').value,
-                    available: $('#goods-available').checked, // 🔹 FIX: Save status
-                    photo: goodsPhotoPreview.dataset.base64 || ''
-                };
+            // 🔹 FIX: Added null check
+            if (goodsForm) {
+                goodsForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    
+                    const goodsData = {
+                        id: state.editingGoodsId || uuid(),
+                        name: $('#goods-name').value,
+                        weight: $('#goods-weight').value,
+                        from: $('#goods-from').value,
+                        to: $('#goods-to').value,
+                        available: $('#goods-available').checked, // 🔹 FIX: Save status
+                        photo: goodsPhotoPreview ? goodsPhotoPreview.dataset.base64 || '' : ''
+                    };
 
-                if (state.editingGoodsId) {
-                    db.goods = db.goods.map(g => g.id === state.editingGoodsId ? goodsData : g);
-                } else {
-                    db.goods.push(goodsData);
-                }
-                
-                saveDB();
-                renderAll();
-                goodsModal.classList.remove('flex');
-            });
+                    if (state.editingGoodsId) {
+                        db.goods = db.goods.map(g => g.id === state.editingGoodsId ? goodsData : g);
+                    } else {
+                        db.goods.push(goodsData);
+                    }
+                    
+                    saveDB();
+                    renderAll();
+                    if (goodsModal) goodsModal.classList.remove('flex');
+                });
+            }
 
             // Photo Preview
-            goodsPhotoInput.addEventListener('change', (e) => handleImageUpload(e, goodsPhotoPreview));
+            // 🔹 FIX: Added null check
+            if (goodsPhotoInput) {
+                goodsPhotoInput.addEventListener('change', (e) => handleImageUpload(e, goodsPhotoPreview));
+            }
 
             // --- 🔹 PUBLIC INQUIRY FORM (Hardcoded Number) ---
-            inquiryForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                
-                const name = $('#inq-name').value;
-                const phone = $('#inq-phone').value;
-                const service = $('#inq-service').value; // 🔹 NEW: Get service value
-                const partner = $('input[name="partner"]:checked').value;
-                const message = $('#inq-message').value;
-                
-                let text = `*New Inquiry*\n\n`;
-                text += `*Name:* ${name}\n`;
-                text += `*Phone:* ${phone}\n`;
-                text += `*Service:* ${service}\n`; // 🔹 NEW: Add service to message
-                if (partner) {
-                    text += `*Preferred Partner:* ${partner}\n`;
-                }
-                text += `*Message:* ${message}`;
-                
-                const url = `https://wa.me/${HARDCODED_WHATSAPP}?text=${encodeURIComponent(text)}`;
-                window.open(url, '_blank');
-            });
+            // 🔹 FIX: Added null check
+            if (inquiryForm) {
+                inquiryForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    
+                    const name = $('#inq-name').value;
+                    const phone = $('#inq-phone').value;
+                    const service = $('#inq-service').value; // 🔹 NEW: Get service value
+                    const partner = $('input[name="partner"]:checked').value;
+                    const message = $('#inq-message').value;
+                    
+                    let text = `*New Inquiry*\n\n`;
+                    text += `*Name:* ${name}\n`;
+                    text += `*Phone:* ${phone}\n`;
+                    text += `*Service:* ${service}\n`; // 🔹 NEW: Add service to message
+                    if (partner) {
+                        text += `*Preferred Partner:* ${partner}\n`;
+                    }
+                    text += `*Message:* ${message}`;
+                    
+                    const url = `https://wa.me/${HARDCODED_WHATSAPP}?text=${encodeURIComponent(text)}`;
+                    window.open(url, '_blank');
+                });
+            }
 
 
             // --- 🔹 ANIMATION OBSERVER ---
