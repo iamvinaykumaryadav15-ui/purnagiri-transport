@@ -42,7 +42,8 @@
 
     <!-- Simple header with contact info -->
     <header class="bg-white shadow-sm">
-        <div class="container mx-auto px-4 lg:px-6 py-4 flex justify-between items-center">
+        <!-- === UPDATED FOR MOBILE VISIBILITY === -->
+        <div class="container mx-auto px-4 lg:px-6 py-4 flex flex-col md:flex-row justify-between items-center gap-4 md:gap-0">
              <!-- Logo -->
              <a href="../index.html" class="text-royal-blue flex items-center gap-3">
                 <!-- Using ../ to go up one directory for the logo -->
@@ -53,13 +54,14 @@
                 </div>
             </a>
 
-            <!-- === ADDED HEADER CONTACTS === -->
-            <div class="hidden md:flex items-center gap-6">
-                <a href="tel:+919760418539" class="flex items-center gap-2 text-gray-700 hover:text-royal-blue font-semibold">
+            <!-- === HEADER CONTACTS (now visible on mobile) === -->
+            <!-- Changed to stack vertically on xs screens -->
+            <div class="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 md:gap-6">
+                <a href="tel:+919760418539" class="flex items-center gap-2 text-gray-700 hover:text-royal-blue font-semibold text-sm md:text-base">
                     <i class="fas fa-phone-alt text-deep-orange"></i>
                     <span>+91 9760418539</span>
                 </a>
-                <a href="https://wa.me/919760418539" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-gray-700 hover:text-royal-blue font-semibold">
+                <a href="https://wa.me/919760418539" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-gray-700 hover:text-royal-blue font-semibold text-sm md:text-base">
                     <i class="fab fa-whatsapp text-lg"></i>
                     <span>WhatsApp</span>
                 </a>
@@ -79,7 +81,7 @@
 
             <!-- Partner Name (still centered) -->
             <h1 class="text-3xl md:text-4xl font-bold text-royal-blue mb-6 text-center">
-                Bareilly Transport Packers 
+                Bareilly Transport Packers & Mover
             </h1>
 
             <!-- === REPLACED DESCRIPTION WITH NEW TEXT (LEFT-ALIGNED) === -->
@@ -122,14 +124,10 @@
 
                 <p class="text-gray-600 flex items-center justify-center gap-2">
                     <i class="fas fa-envelope text-deep-orange"></i>
-                    <span>info@bareillylogistic.com</span>
+                    <!-- === UPDATED EMAIL === -->
+                    <a href="mailto:ravirk.bly@gmail.com" class="hover:underline hover:text-deep-orange">ravirk.bly@gmail.com</a>
                 </p>
-                <a href="https://www.justdial.com/Bareilly/Bareilly-Transport-Logistics-Bara-Bazar-Bareilly/9999PX581-X581-220505151114-H7D1_BZDET?trkid=9966011743-fcomp-cmpophr&term=Bareilly%20Transport%20packer%20&ncatid=10348289&area=&search=Showing%20Results%20for%20%22Bareilly%20Transport%20Packer%20Mover%22%20in%20Bareilly&mncatname=bareilly%20transport%20packer%20mover&ftterm=Bareilly%20Transport%20Packer%20Mover&abd_btn=&abd_heading=&isFreetxt=1&bd=2&cat_b2b_flag=&searchfrom=lst&thumbnail=" 
-                   target="_blank" rel="noopener noreferrer" 
-                   class="text-gray-600 flex items-center justify-center gap-2 hover:text-deep-orange hover:underline">
-                    <i class="fas fa-globe text-deep-orange"></i>
-                    <span>View Justdial Profile</span>
-                </a>
+                <!-- === JUSTDIAL LINK REMOVED === -->
             </div>
 
             <!-- Back Button (re-centered) -->
